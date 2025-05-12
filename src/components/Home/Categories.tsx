@@ -56,7 +56,7 @@ const frameMaterialIcons: Record<ProductFrameMaterial, ReactNode> = {
 };
 
 // ---------------- Component ----------------
-export default function FeaturedCategories() {
+const FeaturedCategories = () => {
   const [showMore, setShowMore] = useState(false);
 
   return (
@@ -138,4 +138,5 @@ export default function FeaturedCategories() {
       </LayoutGroup>
     </section>
   );
-}
+};
+export default FeaturedCategories;
