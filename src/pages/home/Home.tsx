@@ -1,3 +1,4 @@
+import BestSellingProducts from "../../components/Home/BestSellingProducts";
 import FeaturedCategories from "../../components/Home/Categories";
 import Feedback from "../../components/Home/Feedback";
 import FollowUs from "../../components/Home/FollowUs";
@@ -10,6 +11,7 @@ const Home = () => {
     <>
       <Hero />
       <FeaturedCategories />
+      <BestSellingProducts />
       <WhyRideWithUs />
       <WhereToWork />
       <Feedback />
