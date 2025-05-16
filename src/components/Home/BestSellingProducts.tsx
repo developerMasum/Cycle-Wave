@@ -7,14 +7,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
-
-type TProduct = {
-  productId: string;
-  name: string;
-  price: number;
-  images: string[];
-  totalQuantitySold?: number;
-};
+import type { TProduct } from "../../types/products";
 
 export default function BestSellingProducts() {
   const [bikes, setBikes] = useState<TProduct[]>([]);
@@ -106,7 +99,7 @@ export default function BestSellingProducts() {
           >
             {bikes?.map((bike, idx) => (
               <SwiperSlide key={idx}>
-                <Link to={`/product-details/${bike.productId}`}>
+                <Link to={`/details/${bike?._id}`}>
                   <Card className="group relative overflow-hidden border bg-background shadow-sm transition-all duration-300 hover:shadow-md">
                     <CardContent className="p-4">
                       <div className="relative h-40 rounded-xl overflow-hidden">

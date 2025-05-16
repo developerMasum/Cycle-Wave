@@ -14,3 +14,10 @@ export const productFrameMaterial = [
 
 export type ProductCategory = (typeof productCategories)[number];
 export type ProductFrameMaterial = (typeof productFrameMaterial)[number];
+export type TProduct = {
+  _id: string;
+  name: string;
+  price: number;
+  images: string[];
+  totalQuantitySold?: number;
+};
