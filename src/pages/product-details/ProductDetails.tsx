@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { Skeleton } from "../../components/ui/skeleton";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import PD_RightSideDetails from "../../components/PD/PD_RightSideDetails";
 
 export default function ProductDetails() {
   const { id } = useParams();
