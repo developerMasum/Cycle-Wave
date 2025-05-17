@@ -3,6 +3,7 @@ import { useProductQuery } from "../../redux/features/product/productApi";
 import { Skeleton } from "../../components/ui/skeleton";
 import PD_Descriptions from "../../components/PD/PD_Descriptions";
 import PD_ImageSlider from "../../components/PD/PD_ImageSlider";
+import PD_RightSideDetails from "../../components/PD/PD_RightSideDetails";
 
 export default function ProductDetails() {
   const { id } = useParams();
