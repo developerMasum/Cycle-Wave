@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useProductQuery } from "../../redux/features/product/productApi";
 import { Skeleton } from "../../components/ui/skeleton";
 import PD_Descriptions from "../../components/PD/PD_Descriptions";
+import PD_ImageSlider from "../../components/PD/PD_ImageSlider";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -90,11 +91,11 @@ export default function ProductDetails() {
   return (
     <section className="py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* <PD_ImageSlider
+        <PD_ImageSlider
           id={productData?._id as string}
           images={productData?.images || []}
-        /> */}
-        {/* {productData && <PD_RightSideDetails product={productData} />} */}
+        />
+        {productData && <PD_RightSideDetails product={productData} />}
         {productData && (
           <div className="md:col-span-2">
             <PD_Descriptions product={productData} />
