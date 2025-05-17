@@ -1,33 +1,18 @@
 import { useParams } from "react-router-dom";
+import { useProductQuery } from "../../redux/features/product/productApi";
 import { Skeleton } from "../../components/ui/skeleton";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import PD_Descriptions from "../../components/PD/PD_Descriptions";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const [productData, setProductData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const res = await axios.get(
-          `${import.meta.env.VITE_BACKEND_API}/product/${id}`
-        );
-        setProductData(res.data);
-      } catch (error) {
-        console.error("Failed to fetch product", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    if (id) {
-      fetchProduct();
+  const { data, isLoading, isFetching } = useProductQuery(
+    { productId: id as string },
+    {
+      skip: !id,
     }
-  }, [id]);
-
-  if (isLoading) {
+  );
+  if (isLoading || isFetching) {
     return (
       <section className="py-8">
         <div className="flex flex-col lg:flex-row w-full text-white gap-8 p-6">
@@ -101,7 +86,7 @@ export default function ProductDetails() {
       </section>
     );
   }
-  // const productData = data?.data;
+  const productData = data?.data;
   return (
     <section className="py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -110,11 +95,11 @@ export default function ProductDetails() {
           images={productData?.images || []}
         /> */}
         {/* {productData && <PD_RightSideDetails product={productData} />} */}
-        {/* {productData && (
+        {productData && (
           <div className="md:col-span-2">
             <PD_Descriptions product={productData} />
           </div>
-        )} */}
+        )}
       </div>
     </section>
   );
