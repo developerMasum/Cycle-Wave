@@ -27,7 +27,7 @@ export default function MCB_SingleProduct({ product }: PropsType) {
       try {
         setIsLoading(true);
         const { data } = await axios.get(
-          `${backend_api}/products/${productId}?fields=quantity,isDeleted`
+          `${backend_api}/product/${productId}?fields=quantity,isDeleted`
         );
         const productData = data.data;
         if (!productData || productData.isDeleted || productData.quantity < 1) {
