@@ -1,7 +1,22 @@
-import { Menu } from "lucide-react";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
+import { FC } from "react";
+import { LogOut, User } from "lucide-react";
+
+import { Link } from "react-router-dom";
+import { useTheme } from "../../providers/theme-provider";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { logout, selectCurrentUser } from "../../redux/features/auth/authSlice";
 import { ModeToggle } from "../ui/mode-toggle";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
+import Shop_FilterSheet from "../Shop/Shop_FilterSheet";
+import MyWishlistBtn from "./myWishBtn";
+import MyCartBtn from "./MyCartBtn";
 
 interface NavItem {
   label: string;
@@ -9,66 +24,138 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
   { label: "Services", href: "/services" },
-  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
-const Navbar = () => {
+const Navbar: FC = () => {
+  const { theme } = useTheme();
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectCurrentUser);
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  const isSystemDark = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
+
+  const logoUrl =
+    theme === "dark"
+      ? "/logo.png"
+      : theme === "light"
+      ? "/logo-black.png"
+      : isSystemDark
+      ? "/logo.png"
+      : "/logo-black.png";
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="w-full max-w-6xl mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        {/* Logo and company name */}
-        <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
-            LC
+    <header className="sticky top-0 z-40 w-full border-b bg-background h-[68px]">
+      <section className="!py-0">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo and company name */}
+          <Link to={"/"} className="flex items-center gap-1">
+            <img className="w-9 object-cover" src={logoUrl} alt="" />
+            <span className="text-lg font-semibold">CycleCraze</span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                to={item.href}
+                className="text-sm font-medium hover:text-primary transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+            {user && user?.role === "admin" ? (
+              <Link
+                to="/dashboard"
+                className="text-sm font-medium hover:text-primary transition-colors"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              ""
+            )}
+            {/* Cart Button */}
+            <MyWishlistBtn />
+            <MyCartBtn />
+
+            {/* Authentication */}
+            <ModeToggle />
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full overflow-hidden border border-muted w-8 h-8 p-0"
+                  >
+                    {/* <Profile /> */}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <Link to="/profile">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>My Profile</span>
+                    </DropdownMenuItem>
+                  </Link>
+                  {/* {user.role === 'user' &&  */}
+                  <Link to="/my-orders">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <span>My Orders</span>
+                    </DropdownMenuItem>
+                  </Link>
+                  {/* } */}
+                  {user && user.role === "admin" ? (
+                    <Link to="/dashboard">
+                      <DropdownMenuItem className="cursor-pointer">
+                        <span>Dashboard</span>
+                      </DropdownMenuItem>
+                    </Link>
+                  ) : (
+                    ""
+                  )}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    className="cursor-pointer text-destructive focus:text-destructive"
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link to="/auth/login">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  <User className="h-4 w-4" />
+                  Login
+                </Button>
+              </Link>
+            )}
+            {/* Theme toggle button */}
+          </nav>
+
+          {/* Mobile Navigation */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* Cart Button for Mobile */}
+            <MyWishlistBtn />
+            <MyCartBtn />
+
+            <ModeToggle />
+            <Shop_FilterSheet />
           </div>
-          <span className="text-lg font-semibold">LogoCompany</span>
         </div>
-
-        <nav className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
-
-          <ModeToggle />
-        </nav>
-
-        <div className="md:hidden flex items-center">
-          <ModeToggle />
-
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Menu">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            {/* Fixed width to prevent extra right space */}
-            <SheetContent side="right" className="w-[250px]">
-              <nav className="flex flex-col gap-4 mt-8">
-                {navItems.map((item) => (
-                  <SheetClose asChild key={item.label}>
-                    <a
-                      href={item.href}
-                      className="text-lg font-medium hover:text-primary transition-colors"
-                    >
-                      {item.label}
-                    </a>
-                  </SheetClose>
-                ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </div>
+      </section>
     </header>
   );
 };
