@@ -14,7 +14,7 @@ const productApi = baseApi.injectEndpoints({
           });
         }
         return {
-          url: "/products",
+          url: "/product",
           method: "GET",
           params: params,
         };
