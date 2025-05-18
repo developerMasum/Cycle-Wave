@@ -1,21 +1,24 @@
-import { productCategories, productFrameMaterial } from "@/constant/product.const";
+import {
+  productCategories,
+  productFrameMaterial,
+} from "../constants/product.const";
 
 export type TSpecification = {
-    key: string;
-    value: string;
-}
+  key: string;
+  value: string;
+};
 
 export interface IProduct {
-    _id: string;
-    name: string;
-    brand: string;
-    price: number;
-    category: typeof productCategories[number];
-    frameMaterial: typeof productFrameMaterial[number];
-    wheelSize: number;
-    quantity: number;
-    description: string;
-    images: string[];
-    specifications: TSpecification[];
-    isDeleted?: boolean;
+  _id: string;
+  name: string;
+  brand: string;
+  price: number;
+  category: (typeof productCategories)[number];
+  frameMaterial: (typeof productFrameMaterial)[number];
+  wheelSize: number;
+  quantity: number;
+  description: string;
+  images: string[];
+  specifications: TSpecification[];
+  isDeleted?: boolean;
 }

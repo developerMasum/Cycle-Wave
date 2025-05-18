@@ -1,4 +1,4 @@
-import { TQueryParams, TResponseRedux, TUserData } from "@/types";
+import { TQueryParams, TResponseRedux, TUserData } from "../../../types";
 import { baseApi } from "../../api/baseApi";
 
 const userApi = baseApi.injectEndpoints({

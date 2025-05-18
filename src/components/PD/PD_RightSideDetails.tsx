@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CartProduct, IProduct } from "../../types";
 import { useAppDispatch } from "../../redux/hooks";
 import { Card, CardContent } from "../ui/card";
-import { PencilLineIcon } from "lucide-react";
+// import { PencilLineIcon } from "lucide-react";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import PD_Share from "./PD_Share";
@@ -18,8 +18,8 @@ export default function PD_RightSideDetails({
 }: {
   product: IProduct;
 }) {
-  const [openEditForm, setOpenEditForm] = useState(false);
-  const [isAdmin, isLoading] = [false, false];
+  // const [openEditForm, setOpenEditForm] = useState(false);
+  // const [isAdmin, isLoading] = [false, false];
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   const dispatch = useAppDispatch();
@@ -65,7 +65,7 @@ export default function PD_RightSideDetails({
             <h3 className="font-bold">{product.name}</h3>
             <div className="flex gap-2 items-end">
               <StatusBadge quantity={product.quantity} />
-              {!isLoading && isAdmin && (
+              {/* {!isLoading && isAdmin && (
                 <Button
                   onClick={() => setOpenEditForm(true)}
                   variant={"outline"}
@@ -73,7 +73,7 @@ export default function PD_RightSideDetails({
                 >
                   <PencilLineIcon className="cursor-pointer size-5" />
                 </Button>
-              )}
+              )} */}
             </div>
           </div>
 

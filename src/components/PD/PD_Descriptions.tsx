@@ -1,14 +1,12 @@
-import { PencilLineIcon } from "lucide-react";
-import { useState } from "react";
 import { Separator } from "../ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tab";
 import { IProduct } from "../../types";
-import { Button } from "../ui/button";
+
 // import MP_EditSpecification from "../dashboard/manage-products/MP_EditSpecification";
 export default function PD_Descriptions({ product }: { product: IProduct }) {
-  const [specificationOpen, setSpecificationOpen] = useState(false);
+  // const [specificationOpen, setSpecificationOpen] = useState(false);
   //   const [isAdmin, isLoading] = useIsAdmin();
-  const [isAdmin, isLoading] = [true, false];
+  // const [isAdmin, isLoading] = [true, false];
   return (
     <div>
       <Separator className="mb-6" />
@@ -19,7 +17,7 @@ export default function PD_Descriptions({ product }: { product: IProduct }) {
             <TabsTrigger value="description">Description</TabsTrigger>
             <TabsTrigger value="specifications">Specifications</TabsTrigger>
           </TabsList>
-          {!isLoading && isAdmin && (
+          {/* {!isLoading && isAdmin && (
             <Button
               onClick={() => setSpecificationOpen(true)}
               variant={"outline"}
@@ -27,7 +25,7 @@ export default function PD_Descriptions({ product }: { product: IProduct }) {
             >
               <PencilLineIcon className="cursor-pointer size-5" />
             </Button>
-          )}
+          )} */}
         </div>
         <TabsContent value="description" className="text-sm">
           <div className="prose prose-sm max-w-none">
