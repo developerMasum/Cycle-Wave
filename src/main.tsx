@@ -6,6 +6,11 @@ import router from "./routes/router.tsx";
 import { ThemeProvider } from "./providers/theme-provider.tsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
+import "./font.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "react-photo-view/dist/react-photo-view.css";
+import "react-inner-image-zoom/lib/styles.min.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
