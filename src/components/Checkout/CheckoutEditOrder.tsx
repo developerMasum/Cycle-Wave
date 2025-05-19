@@ -1,15 +1,3 @@
-// import { Separator } from "@/components/ui/separator";
-// import {
-//   Card,
-//   CardContent,
-//   CardDescription,
-//   CardHeader,
-//   CardTitle,
-// } from "@/components/ui/card";
-// import { useAppSelector } from "@/redux/hooks";
-// import { selectCurrentCartProducts } from "@/redux/features/cart/cartSlice";
-// import CEO_SingleProduct from "./CEO_SingleProduct";
-
 import { deliveryCharge } from "../../constants/order.const";
 import { selectCurrentCartProducts } from "../../redux/features/cart/cartSlice";
 import { useAppSelector } from "../../redux/hooks";
@@ -23,7 +11,6 @@ import {
 import { Separator } from "../ui/separator";
 import CEO_SingleProduct from "./CEO_SingleProduct";
 
-// import { deliveryCharge } from "@/constant/order.const";
 export default function CheckoutEditOrder({
   isProcessing,
 }: {
