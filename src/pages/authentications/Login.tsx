@@ -29,6 +29,7 @@ import { TUser } from "../../types";
 import { Input } from "../../components/ui/input";
 import { verifyToken } from "../../utils/verifyToken";
 import PassShowingToggler from "../../components/ui/pass-showing-toggoler";
+import { setUser } from "../../redux/features/auth/authSlice";
 
 // Define the form schema with zod
 const formSchema = z.object({
