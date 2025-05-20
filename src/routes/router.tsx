@@ -8,6 +8,8 @@ import Shop from "../pages/shop/Shop";
 import ProductDetails from "../pages/product-details/ProductDetails";
 import Wishlist from "../pages/wish-list/wishlist";
 import Checkout from "../pages/checkout/Checkout";
+import AuthLayout from "../components/layout/AuthLayout";
+import { authRoutes } from "./authRoute";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,12 @@ const router = createBrowserRouter([
         element: <Checkout />,
       },
     ],
+  },
+  {
+    path: "auth",
+    element: <AuthLayout />,
+    errorElement: <NotFound />,
+    children: authRoutes,
   },
 ]);
 
