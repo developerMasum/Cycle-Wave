@@ -10,6 +10,7 @@ import Wishlist from "../pages/wish-list/wishlist";
 import Checkout from "../pages/checkout/Checkout";
 import AuthLayout from "../components/layout/AuthLayout";
 import { authRoutes } from "./authRoute";
+import Profile from "../pages/profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },
