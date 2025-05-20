@@ -7,10 +7,8 @@ import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
-import { useAppDispatch } from "../../redux/hooks";
 import { useSignupMutation } from "../../redux/features/auth/authApi";
-import { verifyToken } from "../../utils/verifyToken";
-import { TUser } from "../../types";
+
 import { errorMessageGenerator } from "../../utils/errorMessageGenerator";
 import {
   Card,
@@ -32,7 +30,6 @@ import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import PassShowingToggler from "../../components/ui/pass-showing-toggoler";
 import { passwordValidation } from "../../schemas/passwordValidation";
-import { setUser } from "../../redux/features/auth/authSlice";
 
 // Define the form schema with zod
 const formSchema = z.object({
@@ -49,38 +46,30 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function SignUp() {
   const [showPass, setShowPass] = useState(false);
-  const dispatch = useAppDispatch();
   const [signUp, { isLoading }] = useSignupMutation();
   const navigate = useNavigate();
   // Initialize form with TypeScript types
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      contactNumber: "",
+      name: "farhan",
+      email: "farhan@gmail.com",
+      password: "123456@@Aa",
+      contactNumber: "01704987382",
     },
   });
 
   // Form submission handler
   const onSubmit = async (data: FormValues) => {
     const toastId = toast.loading("Creating your account...");
-
     try {
       const res = await signUp(data).unwrap();
-      const user = verifyToken(res.data.accessToken) as TUser;
-      dispatch(
-        setUser({
-          user,
-          token: res.data.accessToken,
-        })
-      );
-      toast.success("Account created successfully!", {
-        id: toastId,
-        duration: 2000,
-      });
-      navigate("/"); // Redirect to dashboard after signup
+      if (res) {
+        toast.success("Account created successfully!", { id: toastId });
+        navigate("/");
+      } else {
+        toast.error("Something went wrong!", { id: toastId });
+      }
     } catch (err) {
       toast.error(errorMessageGenerator(err), { id: toastId });
     }
