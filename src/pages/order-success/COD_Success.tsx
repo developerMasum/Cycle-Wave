@@ -12,6 +12,7 @@ export default function COD_Success() {
   const { data, isLoading } = useOrderQuery(id || "not-found", {
     skip: !id,
   });
+  console.log(data?.data);
 
   if (isLoading) {
     return <PaymentLoader />;

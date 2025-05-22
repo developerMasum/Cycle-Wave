@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Check, ChevronRight, Download, ShoppingBag } from "lucide-react";
 
 import { Link, useNavigate } from "react-router-dom";
-import { IOrder } from "../../types";
+
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 import { useAppSelector } from "../../redux/hooks";
 import { Badge } from "../ui/badge";
@@ -16,7 +17,7 @@ import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import { dateToStringDate } from "../../libs/utils";
 
-export default function OS_OrderDetails({ orderData }: { orderData: IOrder }) {
+export default function OS_OrderDetails({ orderData }: { orderData: any }) {
   const user = useAppSelector(selectCurrentUser);
   const navigate = useNavigate();
   const handlePrintReceipt = () => {
@@ -55,7 +56,7 @@ export default function OS_OrderDetails({ orderData }: { orderData: IOrder }) {
                   Shipping Address
                 </h3>
                 <div className="text-sm">
-                  <p className="font-medium">{orderData.address}</p>
+                  <p className="font-medium">{orderData?.user?.address}</p>
                 </div>
               </div>
               <div className="space-y-2">
@@ -66,7 +67,7 @@ export default function OS_OrderDetails({ orderData }: { orderData: IOrder }) {
                   Order Date
                 </h3>
                 <p className="text-sm">
-                  {dateToStringDate(orderData.createdAt)}
+                  {dateToStringDate(orderData?.createdAt)}
                 </p>
               </div>
             </div>
@@ -76,10 +77,10 @@ export default function OS_OrderDetails({ orderData }: { orderData: IOrder }) {
             <div className="space-y-4">
               <h3 className="font-medium">Items</h3>
               <div className="space-y-3">
-                {orderData.products.map((item) => {
+                {orderData?.products?.map((item: any) => {
                   const product = item.product;
                   return (
-                    <div key={product._id} className="flex items-center gap-4">
+                    <div key={product?._id} className="flex items-center gap-4">
                       <img
                         src={product.images[0]}
                         alt={item.name}
@@ -91,7 +92,9 @@ export default function OS_OrderDetails({ orderData }: { orderData: IOrder }) {
                           Qty: {item.quantity}
                         </p>
                       </div>
-                      <p className="font-medium">৳{item.price}</p>
+                      <p className="font-medium">
+                        ৳{orderData.totalPrice / item.quantity}
+                      </p>
                     </div>
                   );
                 })}
@@ -122,7 +125,7 @@ export default function OS_OrderDetails({ orderData }: { orderData: IOrder }) {
         <CardFooter className="flex flex-col sm:flex-row gap-3 pt-0">
           <Button
             variant="outline"
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto no-print"
             onClick={handlePrintReceipt}
           >
             <Download className="mr-2 h-4 w-4" />
