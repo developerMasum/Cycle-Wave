@@ -35,9 +35,9 @@ export default function CheckoutForm({
   const form = useForm<FormValues>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
-      name: "",
-      contact: "",
-      address: "",
+      name: "farhan adnan",
+      contact: "0170487382",
+      address: "Dhaka,Bangladesh",
     },
   });
 
@@ -73,7 +73,7 @@ export default function CheckoutForm({
     if (userData?.email) {
       orderData.email = userData?.email;
     }
-
+    console.log(orderData);
     const toastId = toast.loading("Checkout is on processing...");
     try {
       const result = await checkout(orderData).unwrap();

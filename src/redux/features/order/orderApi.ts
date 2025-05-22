@@ -1,9 +1,8 @@
+import { IOrder, TQueryParams, TResponseRedux } from "../../../types";
 import { baseApi } from "../../api/baseApi";
-import { IOrder, TQueryParams, TResponseRedux } from "@/types";
 
 const orderApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-
     orders: builder.query({
       query: (args: TQueryParams[] | undefined) => {
         const params = new URLSearchParams();
@@ -50,7 +49,9 @@ const orderApi = baseApi.injectEndpoints({
         url: `/orders/${orderId}`,
         method: "GET",
       }),
-      providesTags: (_result, _error, orderId) => [{ type: "Orders", id: orderId }],
+      providesTags: (_result, _error, orderId) => [
+        { type: "Orders", id: orderId },
+      ],
       transformResponse: (response: TResponseRedux<IOrder>) => ({
         data: response.data,
       }),
@@ -60,7 +61,9 @@ const orderApi = baseApi.injectEndpoints({
         url: `/orders/success/${tranId}`,
         method: "GET",
       }),
-      providesTags: (_result, _error, orderId) => [{ type: "Orders", id: orderId }],
+      providesTags: (_result, _error, orderId) => [
+        { type: "Orders", id: orderId },
+      ],
       transformResponse: (response: TResponseRedux<IOrder>) => ({
         data: response.data,
       }),
@@ -117,5 +120,5 @@ export const {
   useUpdateOrderStatusMutation,
   useDeleteOrderMutation,
   useCheckoutMutation,
-  useOrderByTranIdQuery
+  useOrderByTranIdQuery,
 } = orderApi;

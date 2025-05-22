@@ -6,13 +6,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Form } from "../ui/form";
-import { TUserData } from "@/types";
+
 import { Dispatch, SetStateAction } from "react";
 
 import { useUpdateMyDataMutation } from "../../redux/features/user/userApi";
 import { errorMessageGenerator } from "../../utils/errorMessageGenerator";
 import { uploadImageToCloudinary } from "../../utils/uploadImageToCloudinary";
 import EditUserForm from "./EditUserForm";
+import { TUserData } from "../../types";
 
 const formSchema = z.object({
   name: z.string({ required_error: "Please enter your name!!" }),
