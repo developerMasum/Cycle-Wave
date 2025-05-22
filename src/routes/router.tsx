@@ -12,6 +12,7 @@ import AuthLayout from "../components/layout/AuthLayout";
 import { authRoutes } from "./authRoute";
 import Profile from "../pages/profile/Profile";
 import MyOrders from "../pages/my-orders/MyOrders";
+import COD_Success from "../pages/order-success/COD_Success";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/my-orders",
         element: <MyOrders />,
+      },
+      {
+        path: "checkout/COD/success/:id",
+        element: <COD_Success />,
       },
     ],
   },
