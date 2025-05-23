@@ -24,23 +24,15 @@ const orderApi = baseApi.injectEndpoints({
       }),
     }),
     myOrders: builder.query({
-      query: (args: TQueryParams[] | undefined) => {
-        const params = new URLSearchParams();
-        if (args) {
-          args.forEach((item) => {
-            params.append(item.name as string, item.value as string);
-          });
-        }
-        return {
-          url: "/orders/my-orders",
-          method: "GET",
-          params: params,
-        };
-      },
-      providesTags: ["Orders"],
-      transformResponse: (response: TResponseRedux<IOrder[]>) => ({
+      query: (orderId: string) => ({
+        url: `/orders/my-orders/${orderId}`,
+        method: "GET",
+      }),
+      providesTags: (_result, _error, orderId) => [
+        { type: "Orders", id: orderId },
+      ],
+      transformResponse: (response: TResponseRedux<IOrder>) => ({
         data: response.data,
-        meta: response.meta,
       }),
     }),
 

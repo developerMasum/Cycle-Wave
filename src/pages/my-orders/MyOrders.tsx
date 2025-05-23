@@ -12,9 +12,14 @@ import {
 import { Skeleton } from "../../components/ui/skeleton";
 import { Button } from "../../components/ui/button";
 import MO_StatusBadge from "../../components/Dashboard/manage-orders/MO_StatusBadge";
+import { useMyDataQuery } from "../../redux/features/user/userApi";
 
 export default function MyOrders() {
-  const { data, isLoading } = useMyOrdersQuery(undefined);
+  const { data: userInfo, isLoading: userInfoLoading } =
+    useMyDataQuery(undefined);
+  const email = userInfo?.data?.email;
+
+  const { data, isLoading } = useMyOrdersQuery(email);
 
   const formatDate = (dateString: Date): string => {
     const date = new Date(dateString);
@@ -25,7 +30,7 @@ export default function MyOrders() {
     });
   };
 
-  if (isLoading) {
+  if (isLoading || userInfoLoading) {
     return (
       <div className="p-6 space-y-4">
         <h1 className="text-2xl font-bold">My Orders</h1>

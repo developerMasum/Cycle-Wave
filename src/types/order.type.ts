@@ -44,5 +44,6 @@ export type OrderDataType = {
   name: string;
   contact: string;
   email?: string;
+  userId?: string;
   paymentMethod: (typeof paymentMethod)[number];
 };
