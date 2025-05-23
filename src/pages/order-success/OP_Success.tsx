@@ -1,17 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
-import { useOrderQuery } from "../../redux/features/order/orderApi";
 import { clearCart } from "../../redux/features/cart/cartSlice";
 import PaymentLoader from "../../components/Payment/PaymentLoader";
-import PaymentNotFound from "../../components/Payment/PaymentNotFound";
 import OS_OrderDetails from "../../components/Payment/OrderDetails";
+import PaymentNotFound from "../../components/Payment/PaymentNotFound";
+import { useOrderByTranIdQuery } from "../../redux/features/order/orderApi";
 
-export default function COD_Success() {
-  const { id } = useParams();
+export default function OP_Success() {
+  const { tranId } = useParams();
   const dispatch = useAppDispatch();
-  const { data, isLoading } = useOrderQuery(id || "not-found", {
-    skip: !id,
-  });
+  const { data, isLoading } = useOrderByTranIdQuery(tranId || "not-found");
 
   if (isLoading) {
     return <PaymentLoader />;

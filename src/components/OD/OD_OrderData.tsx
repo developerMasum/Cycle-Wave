@@ -2,7 +2,7 @@
 import { format } from "date-fns";
 
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import StatusProgress from "./StatusProgress";
+import StatusProgress from "../OrderDetails/StatusProgress";
 import PaymentMethodBadge from "../badge/PaymentMethodBadge";
 import PaidStatusBadge from "../badge/PaidStatusBadge";
 import { Separator } from "../ui/separator";

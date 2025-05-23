@@ -73,7 +73,6 @@ export default function CheckoutForm({
     if (userData?.email) {
       orderData.email = userData?.email;
     }
-    console.log(orderData);
     const toastId = toast.loading("Checkout is on processing...");
     try {
       const result = await checkout(orderData).unwrap();
@@ -81,7 +80,7 @@ export default function CheckoutForm({
         const id = result.data._id;
         window.location.replace(`/checkout/COD/success/${id}`);
       } else {
-        window.location.replace(result.data);
+        window.location.href = result?.data?.payment_url;
       }
     } catch (error) {
       toast.error(errorMessageGenerator(error), { id: toastId });
