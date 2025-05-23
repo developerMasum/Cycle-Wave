@@ -136,7 +136,7 @@ export default function OS_OrderDetails({ orderData }: { orderData: any }) {
             <Button
               variant="outline"
               className="w-full sm:w-auto"
-              onClick={() => navigate("/orders")}
+              onClick={() => navigate("/my-orders")}
             >
               <ShoppingBag className="mr-2 h-4 w-4" />
               View All Orders

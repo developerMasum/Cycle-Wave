@@ -13,6 +13,7 @@ import { authRoutes } from "./authRoute";
 import Profile from "../pages/profile/Profile";
 import MyOrders from "../pages/my-orders/MyOrders";
 import COD_Success from "../pages/order-success/COD_Success";
+import OrderDetails from "../pages/order-details/OrderDetails";
 
 const router = createBrowserRouter([
   {
@@ -53,8 +54,12 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "/orders",
+        path: "/my-orders",
         element: <MyOrders />,
+      },
+      {
+        path: "/order-details/:id",
+        element: <OrderDetails />,
       },
       {
         path: "checkout/COD/success/:id",
