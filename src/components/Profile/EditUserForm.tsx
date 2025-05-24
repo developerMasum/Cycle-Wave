@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { TUserData } from "../../types";
@@ -22,8 +23,7 @@ type PropsType = {
       address?: string | undefined;
       profileImage?: File | undefined;
     },
-    unknown,
-    undefined
+    any
   >;
   userData: TUserData;
   isLoading: boolean;
