@@ -3,7 +3,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 type FormValues = z.infer<typeof checkoutFormSchema>;
 
-import { selectCurrentCartProducts } from "../../redux/features/cart/cartSlice";
+import {
+  clearCart,
+  selectCurrentCartProducts,
+} from "../../redux/features/cart/cartSlice";
 import { useCheckoutMutation } from "../../redux/features/order/orderApi";
 import { OrderDataType, TUserData } from "../../types";
 import { useAppSelector } from "../../redux/hooks";
@@ -81,6 +84,8 @@ export default function CheckoutForm({
         window.location.replace(`/checkout/COD/success/${id}`);
       } else {
         window.location.href = result?.data?.payment_url;
+        toast.success("Order placed successfully!", { id: toastId });
+        clearCart();
       }
     } catch (error) {
       toast.error(errorMessageGenerator(error), { id: toastId });
