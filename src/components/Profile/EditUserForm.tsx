@@ -17,8 +17,8 @@ import { Label } from "../ui/label";
 type PropsType = {
   form: UseFormReturn<
     {
-      name: string;
-      contactNumber: string;
+      name?: string;
+      contactNumber?: string;
       address?: string | undefined;
       profileImage?: File | undefined;
     },

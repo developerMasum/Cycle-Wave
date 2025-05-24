@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { useMyOrdersQuery } from "../../redux/features/order/orderApi";
@@ -19,7 +20,7 @@ export default function MyOrders() {
     useMyDataQuery(undefined);
   const email = userInfo?.data?.email;
 
-  const { data, isLoading } = useMyOrdersQuery(email);
+  const { data, isLoading } = useMyOrdersQuery(email || "not-found");
 
   const formatDate = (dateString: Date): string => {
     const date = new Date(dateString);
@@ -51,7 +52,7 @@ export default function MyOrders() {
     );
   }
 
-  if (!data?.data?.length) {
+  if (!Array.isArray(data?.data) || data?.data.length === 0) {
     return (
       <section className="py-8">
         <h1 className="text-2xl font-bold mb-4">My Orders</h1>
@@ -74,7 +75,7 @@ export default function MyOrders() {
       <h1 className="text-2xl font-bold mb-6">My Orders</h1>
 
       <div className="space-y-4">
-        {data?.data?.map((order) => (
+        {data?.data?.map((order: any) => (
           <Link key={order._id} to={`/order-details/${order._id}`}>
             <Card className="group mb-4">
               <CardHeader className="pb-2">

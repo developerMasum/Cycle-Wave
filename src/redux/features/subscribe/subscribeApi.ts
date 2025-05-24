@@ -1,4 +1,5 @@
-import { TQueryParams, TResponseRedux, ISubscribe } from "@/types";
+// import { TQueryParams, TResponseRedux, ISubscribe } from "@/types";
+import { TQueryParams , TResponseRedux, ISubscribe } from "../../../types";
 import { baseApi } from "../../api/baseApi";
 
 const subscribeApi = baseApi.injectEndpoints({
