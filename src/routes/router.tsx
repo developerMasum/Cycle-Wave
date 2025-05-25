@@ -14,6 +14,7 @@ import Profile from "../pages/profile/Profile";
 import MyOrders from "../pages/my-orders/MyOrders";
 import COD_Success from "../pages/order-success/COD_Success";
 import OrderDetails from "../pages/order-details/OrderDetails";
+import OP_Success from "../pages/order-success/OP_Success";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "checkout/COD/success/:id",
         element: <COD_Success />,
+      },
+      {
+        path: "checkout/OP/success/:tranId",
+        element: <OP_Success />,
       },
     ],
   },

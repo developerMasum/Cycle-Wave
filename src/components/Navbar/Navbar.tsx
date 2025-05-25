@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { LogOut, User } from "lucide-react";
+import { LogOut, ShoppingCart, User } from "lucide-react";
 
 import { Link } from "react-router-dom";
 import { useTheme } from "../../providers/theme-provider";
@@ -107,6 +107,7 @@ const Navbar: FC = () => {
                   {/* {user.role === 'user' &&  */}
                   <Link to="/my-orders">
                     <DropdownMenuItem className="cursor-pointer">
+                      <ShoppingCart className="mr-2 h-4 w-4" />
                       <span>My Orders</span>
                     </DropdownMenuItem>
                   </Link>

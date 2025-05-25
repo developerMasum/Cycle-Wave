@@ -56,8 +56,8 @@ const OD_OrderData = ({ orderData }: { orderData: any }) => {
                 <div className="flex items-center">
                   <span className="inline-block w-32">Status:</span>
                   <PaidStatusBadge
-                    isPaid={orderData?.paidStatus}
-                    payment={orderData?.payment}
+                    isPaid={orderData?.paymentStatus}
+                    payment={orderData?.totalPrice}
                   />
                 </div>
                 {orderData?.transactionId && (
