@@ -5,13 +5,14 @@ import {
   SquareChartGantt,
 } from "lucide-react";
 import { DashBoardItemsData, SidebarItems } from "../../../types";
+import Analytics from "../analytics/Analytics";
 
 const dashBoardItemsData: DashBoardItemsData[] = [
   {
     title: "Analytics",
     icon: <BarChart2 size={18} />,
     path: "analytics",
-    component: "<Analytics />",
+    component: <Analytics />,
   },
   {
     title: "Manage user",
