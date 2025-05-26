@@ -15,6 +15,8 @@ import MyOrders from "../pages/my-orders/MyOrders";
 import COD_Success from "../pages/order-success/COD_Success";
 import OrderDetails from "../pages/order-details/OrderDetails";
 import OP_Success from "../pages/order-success/OP_Success";
+import DashboardLayout from "../components/layout/DashboardLayout";
+import { dashboardRoutes } from "./dashboardRutes";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +79,12 @@ const router = createBrowserRouter([
     element: <AuthLayout />,
     errorElement: <NotFound />,
     children: authRoutes,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    errorElement: <NotFound />,
+    children: dashboardRoutes,
   },
 ]);
 
