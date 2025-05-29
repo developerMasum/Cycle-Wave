@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "react-photo-view/dist/react-photo-view.css";
 import "react-inner-image-zoom/lib/styles.min.css";
+import { Toaster } from "./components/ui/toaster.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")!).render(
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
+      <Toaster />
     </ThemeProvider>
   </StrictMode>
 );
