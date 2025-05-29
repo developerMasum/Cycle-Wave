@@ -5,7 +5,8 @@ import {
   SquareChartGantt,
 } from "lucide-react";
 import { DashBoardItemsData, SidebarItems } from "../../../types";
-import Analytics from "../analytics/Analytics";
+import Analytics from "../../../pages/dashboard/Analytics";
+import { ManageUsers } from "../../../pages/dashboard/ManageUsers";
 
 const dashBoardItemsData: DashBoardItemsData[] = [
   {
@@ -18,7 +19,7 @@ const dashBoardItemsData: DashBoardItemsData[] = [
     title: "Manage user",
     icon: <Users size={18} />,
     path: "manage-user",
-    component: "<ManageUsers />",
+    component: <ManageUsers />,
   },
   {
     title: "Manage Products",

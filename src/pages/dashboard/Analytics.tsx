@@ -1,7 +1,7 @@
 import { ChartColumnBig } from "lucide-react";
-import AnalyticsTopTenProducts from "./AnalyticsTopTenProducts";
-import AnalyticsTop from "./AnalyticsTop";
-import AnalyticsChart from "./AnalyticsChart";
+import AnalyticsTopTenProducts from "../../components/Dashboard/analytics/AnalyticsTopTenProducts";
+import AnalyticsTop from "../../components/Dashboard/analytics/AnalyticsTop";
+import AnalyticsChart from "../../components/Dashboard/analytics/AnalyticsChart";
 
 const Analytics = () => {
   return (
