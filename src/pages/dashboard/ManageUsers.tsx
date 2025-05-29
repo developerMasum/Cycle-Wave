@@ -83,7 +83,7 @@ export const ManageUsers = () => {
               <TableHead>Contact Info</TableHead>
               <TableHead>Role</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              {/* <TableHead className="text-right">Actions</TableHead> */}
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -133,7 +133,7 @@ export const ManageUsers = () => {
               <TableHead>Contact Info</TableHead>
               <TableHead>Role</TableHead>
               <TableHead>Block</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              {/* <TableHead className="text-right">Actions</TableHead> */}
             </TableRow>
           </TableHeader>
           <TableBody>

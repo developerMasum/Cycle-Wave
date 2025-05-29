@@ -1,24 +1,13 @@
 import { toast } from "sonner";
-
-import { useState } from "react";
 import { TUserData } from "../../../types";
 import { useToggleUserStateMutation } from "../../../redux/features/user/userApi";
 import { errorMessageGenerator } from "../../../utils/errorMessageGenerator";
 import { TableCell, TableRow } from "../../ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
-import { HomeIcon, PhoneIcon, UserRoundPen } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../../ui/dialog";
-import { Button } from "../../ui/button";
+import { HomeIcon, PhoneIcon } from "lucide-react";
+
 import UserRoleBadge from "./UserRoleBadge";
 import { Switch } from "../../ui/switch";
-import MU_SU_EditForm from "./MU_SU_EditForm";
 
 export const MU_SingleUser = ({
   user,
@@ -28,7 +17,6 @@ export const MU_SingleUser = ({
   index: number;
 }) => {
   const [toggleState, { isLoading }] = useToggleUserStateMutation();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const handleUserBlockStatusChange = async () => {
     const toastId = toast.loading("Changing Block Status...");
     try {
@@ -83,26 +71,6 @@ export const MU_SingleUser = ({
           checked={user.isBlock}
           onCheckedChange={handleUserBlockStatusChange}
         />
-      </TableCell>
-      <TableCell className="text-right">
-        <div className="flex justify-end gap-2">
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button variant="outline" size="icon">
-                <UserRoundPen />
-              </Button>
-            </DialogTrigger>
-
-            <DialogContent className="sm:max-w-[700px] ">
-              <DialogHeader>
-                <DialogTitle>Edit User Data</DialogTitle>
-                <DialogDescription>
-                  <MU_SU_EditForm userData={user} setIsOpen={setIsDialogOpen} />
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
-        </div>
       </TableCell>
     </TableRow>
   );
