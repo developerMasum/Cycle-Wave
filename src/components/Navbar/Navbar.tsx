@@ -33,6 +33,7 @@ const Navbar: FC = () => {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
+  // console.log(user);
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -98,20 +99,23 @@ const Navbar: FC = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                  <Link to="/profile">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <User className="mr-2 h-4 w-4" />
-                      <span>My Profile</span>
-                    </DropdownMenuItem>
-                  </Link>
-                  {/* {user.role === 'user' &&  */}
-                  <Link to="/my-orders">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <ShoppingCart className="mr-2 h-4 w-4" />
-                      <span>My Orders</span>
-                    </DropdownMenuItem>
-                  </Link>
-                  {/* } */}
+                  {user.role === "user" && (
+                    <Link to="/profile">
+                      <DropdownMenuItem className="cursor-pointer">
+                        <User className="mr-2 h-4 w-4" />
+                        <span>My Profile</span>
+                      </DropdownMenuItem>
+                    </Link>
+                  )}
+                  {user.role === "user" && (
+                    <Link to="/my-orders">
+                      <DropdownMenuItem className="cursor-pointer">
+                        <ShoppingCart className="mr-2 h-4 w-4" />
+                        <span>My Orders</span>
+                      </DropdownMenuItem>
+                    </Link>
+                  )}
+
                   {user && user.role === "admin" ? (
                     <Link to="/dashboard">
                       <DropdownMenuItem className="cursor-pointer">
