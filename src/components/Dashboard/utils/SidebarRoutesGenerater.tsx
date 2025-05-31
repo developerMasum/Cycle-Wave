@@ -7,6 +7,7 @@ import {
 import { DashBoardItemsData, SidebarItems } from "../../../types";
 import Analytics from "../../../pages/dashboard/Analytics";
 import { ManageUsers } from "../../../pages/dashboard/ManageUsers";
+import { ManageProducts } from "../../../pages/dashboard/ManageProducts";
 
 const dashBoardItemsData: DashBoardItemsData[] = [
   {
@@ -25,7 +26,7 @@ const dashBoardItemsData: DashBoardItemsData[] = [
     title: "Manage Products",
     icon: <PackageSearch size={18} />,
     path: "manage-product",
-    component: "<ManageProducts />",
+    component: <ManageProducts />,
   },
   {
     title: "Manage Orders",
