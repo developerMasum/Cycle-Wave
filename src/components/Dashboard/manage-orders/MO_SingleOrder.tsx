@@ -305,7 +305,7 @@ export default function MO_SingleOrder({
           <DialogHeader>
             <DialogTitle>Order Details</DialogTitle>
             <DialogDescription>
-              {/* <MO_OrderDetails id={order._id} /> */}
+              <MO_OrderDetails id={order._id} />
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
