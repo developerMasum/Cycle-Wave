@@ -8,6 +8,7 @@ import { DashBoardItemsData, SidebarItems } from "../../../types";
 import Analytics from "../../../pages/dashboard/Analytics";
 import { ManageUsers } from "../../../pages/dashboard/ManageUsers";
 import { ManageProducts } from "../../../pages/dashboard/ManageProducts";
+import ManageOrders from "../../../pages/dashboard/ManageOrders";
 
 const dashBoardItemsData: DashBoardItemsData[] = [
   {
@@ -32,7 +33,7 @@ const dashBoardItemsData: DashBoardItemsData[] = [
     title: "Manage Orders",
     icon: <SquareChartGantt size={18} />,
     path: "manage-order",
-    component: "<ManageOrders />",
+    component: <ManageOrders />,
   },
 ];
 
