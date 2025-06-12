@@ -171,11 +171,11 @@ export default function MP_SingleProduct({ product }: { product: IProduct }) {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-      <EditProduct
+      {/* <EditProduct
         isDialogOpen={isEditOpen}
         setIsDialogOpen={setIsEditOpen}
         product={product}
-      />
+      /> */}
       <MP_ProductGallery
         isDialogOpen={galleryOpen}
         setIsDialogOpen={setGalleryOpen}
