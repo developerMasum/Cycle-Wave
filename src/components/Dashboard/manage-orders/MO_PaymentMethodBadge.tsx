@@ -4,7 +4,8 @@ import { paymentMethod } from "../../../constants/order.const";
 
 type PropsType = {
   method: (typeof paymentMethod)[number];
-  isPaid: boolean;
+  isPaid: string;
+
   transactionId?: string;
   payment?: number;
 };

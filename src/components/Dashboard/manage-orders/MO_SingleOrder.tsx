@@ -70,7 +70,7 @@ export default function MO_SingleOrder({
   const [updateStatus, { isLoading }] = useUpdateOrderStatusMutation();
   const [deleteOrders, { isLoading: isDeleteLoading }] =
     useDeleteOrderMutation();
-
+  console.log(order);
   const handleStatusChange = async (value: (typeof order_status)[number]) => {
     const toastId = toast.loading(
       `Updating status to "${
@@ -102,7 +102,7 @@ export default function MO_SingleOrder({
 
   const loading = isLoading || isDeleteLoading;
   const formattedDate = dateToStringDate(order.createdAt);
-  const totalAmount = order.totalPrice + order.deliveryCharge;
+  const totalAmount = order.totalPrice + order?.deliveryCharge;
 
   return (
     <>
@@ -115,21 +115,21 @@ export default function MO_SingleOrder({
           <div className="space-y-1">
             <div className="flex items-center space-x-1 text-foreground">
               <UserIcon className="h-3 w-3" />
-              <p className="font-medium text-sm">{order.name}</p>
+              <p className="font-medium text-sm">{order.user.name}</p>
             </div>
 
             <div className="flex items-center space-x-1 text-foreground/70">
               <PhoneIcon className="h-3 w-3" />
-              <p className="text-sm">{order.contact}</p>
+              <p className="text-sm">{order.user.phone}</p>
             </div>
 
             <div className="flex items-center space-x-1 text-foreground/70">
               <HomeIcon className="h-3 w-3" />
               <p
                 className="text-sm truncate max-w-[150px]"
-                title={order.address}
+                title={order.user.address}
               >
-                {order.address}
+                {order.user.address}
               </p>
             </div>
           </div>
@@ -138,9 +138,9 @@ export default function MO_SingleOrder({
         <TableCell>
           <MO_PaymentMethodBadge
             method={order.paymentMethod}
-            isPaid={order.paidStatus}
+            isPaid={order.paymentStatus}
             transactionId={order.transactionId}
-            payment={order?.payment}
+            payment={order?.totalPrice}
           />
         </TableCell>
         <TableCell>
@@ -152,9 +152,7 @@ export default function MO_SingleOrder({
               </p>
 
               <p className="text-muted-foreground text-sm">Delivery:</p>
-              <p className="text-right text-sm">
-                ৳{order.deliveryCharge.toLocaleString()}
-              </p>
+              <p className="text-right text-sm">৳{order?.deliveryCharge}</p>
 
               <Separator className="col-span-2 my-1" />
 
@@ -167,7 +165,7 @@ export default function MO_SingleOrder({
         </TableCell>
 
         <TableCell>
-          <MO_StatusBadge status={order.status} />
+          <MO_StatusBadge status={order.paymentStatus} />
         </TableCell>
 
         <TableCell>
@@ -248,13 +246,13 @@ export default function MO_SingleOrder({
                         htmlFor={`${order._id}-${status}`}
                         className="text-sm font-medium cursor-pointer flex items-center"
                       >
-                        {status === "PENDING" && (
+                        {status === "Pending" && (
                           <ClockIcon className="h-3 w-3 mr-2 text-amber-600" />
                         )}
-                        {status === "SHIPPED" && (
+                        {status === "Shipped" && (
                           <TruckIcon className="h-3 w-3 mr-2 text-blue-600" />
                         )}
-                        {status === "DELIVERED" && (
+                        {status === "Delivered" && (
                           <CheckCircleIcon className="h-3 w-3 mr-2 text-green-600" />
                         )}
                         {status.charAt(0) + status.slice(1).toLowerCase()}
@@ -282,7 +280,7 @@ export default function MO_SingleOrder({
               order for
               <span className="font-medium text-foreground/90">
                 {" "}
-                {order?.name}
+                {order?.user?.name}
               </span>{" "}
               with all its associated data.
             </AlertDialogDescription>

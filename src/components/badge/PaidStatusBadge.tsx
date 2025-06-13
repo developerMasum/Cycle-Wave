@@ -7,7 +7,7 @@ export default function PaidStatusBadge({
 }: {
   transactionId?: string;
   payment?: number;
-  isPaid: boolean;
+  isPaid: string;
 }) {
   return (
     <div className="flex flex-col gap-0.5">

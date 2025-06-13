@@ -1,39 +1,13 @@
-// import DefaultPagination from "@/components/default-pagination";
-// import SearchItems from "@/components/search-items";
-// import { order_status } from "@/constant/order.const";
-// import { useOrdersQuery } from "@/redux/features/order/orderApi";
-// import { TQueryParams } from "@/types";
-// import {
-//   ChevronDown,
-//   ChevronsUpDown,
-//   ChevronUp,
-//   SquareChartGantt,
-// } from "lucide-react";
-// import { useLocation, useSearchParams } from "react-router-dom";
-// import {
-//   Table,
-//   TableBody,
-//   TableHead,
-//   TableHeader,
-//   TableRow,
-//   TableCell,
-// } from "@/components/ui/table";
-// import { Skeleton } from "@/components/ui/skeleton";
-// import {
-//   DropdownMenu,
-//   DropdownMenuContent,
-//   DropdownMenuItem,
-//   DropdownMenuLabel,
-//   DropdownMenuSeparator,
-//   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu";
-// import MO_SingleOrder from "@/components/modules/dashboard/manage-orders/MO_SingleOrder";
-
 import { useLocation, useSearchParams } from "react-router";
 import { TQueryParams } from "../../types";
 import { useOrdersQuery } from "../../redux/features/order/orderApi";
 import { order_status } from "../../constants/order.const";
-import { ChevronsUpDown, SquareChartGantt } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronsUpDown,
+  ChevronUp,
+  SquareChartGantt,
+} from "lucide-react";
 import SearchItems from "../../components/Shop/SearchItems";
 import {
   Table,
@@ -73,7 +47,8 @@ export default function ManageOrders() {
   const { data, isLoading } = useOrdersQuery(params);
 
   const isLoadingData = isLoading;
-  const orders = data?.data || [];
+  const orders = data?.data?.data || [];
+  // console.log(orders);
   const meta = data?.meta;
   const handleSorting = (field: string) => {
     if (!field) {
@@ -218,7 +193,7 @@ export default function ManageOrders() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {orders.map((order, idx) => (
+            {orders?.map((order, idx) => (
               <MO_SingleOrder key={order._id} order={order} index={idx + 1} />
             ))}
           </TableBody>

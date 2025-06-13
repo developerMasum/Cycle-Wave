@@ -28,6 +28,7 @@ export interface IOrder {
   paymentStatus: "Pending" | "Paid" | "Failed"; // Extend as needed
   transactionId: string;
   paymentMethod: "Cash On Delivery" | "Online Payment"; // Extend as needed
+  deliveryCharge: number;
   createdAt: string;
   updatedAt: string;
   __v: number;
