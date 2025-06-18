@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useLocation, useSearchParams } from "react-router";
 import { TQueryParams } from "../../types";
 import { useOrdersQuery } from "../../redux/features/order/orderApi";
@@ -47,7 +48,7 @@ export default function ManageOrders() {
   const { data, isLoading } = useOrdersQuery(params);
 
   const isLoadingData = isLoading;
-  const orders = data?.data?.data || [];
+  const orders = (data?.data?.data as any) || [];
   // console.log(orders);
   const meta = data?.meta;
   const handleSorting = (field: string) => {
@@ -193,7 +194,7 @@ export default function ManageOrders() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {orders?.map((order, idx) => (
+            {orders?.map((order: any, idx: number) => (
               <MO_SingleOrder key={order._id} order={order} index={idx + 1} />
             ))}
           </TableBody>

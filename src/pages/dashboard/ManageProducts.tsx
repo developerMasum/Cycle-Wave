@@ -33,6 +33,7 @@ import {
 } from "../../components/ui/dropdown-menu";
 import MP_SingleProduct from "../../components/Dashboard/manage-product/MP_SingleProduct";
 import DefaultPagination from "../../components/Shop/DefaultPagination";
+import AddProduct from "../../components/Dashboard/manage-product/AddProduct";
 
 export const ManageProducts = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -99,7 +100,7 @@ export const ManageProducts = () => {
           <Package className="h-6 w-6" />
           <h1 className="text-2xl font-bold">Manage Products</h1>
         </div>
-        {/* <AddProduct /> */}
+        <AddProduct />
       </div>
 
       {/* Filters */}
