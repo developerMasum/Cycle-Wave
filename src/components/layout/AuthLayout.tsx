@@ -1,8 +1,12 @@
 import { Outlet } from "react-router-dom";
+import ScrollToTop from "../common/ScrollTop";
+import BottomNavbar from "../common/BottomNavbar";
 
 export default function AuthLayout() {
   return (
     <>
+      <ScrollToTop />
+      <BottomNavbar />
       <div className="w-full relative">
         <div className="grid md:grid-cols-2 !px-0">
           <img

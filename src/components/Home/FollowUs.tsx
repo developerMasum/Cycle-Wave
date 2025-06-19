@@ -11,7 +11,7 @@ const FollowUs = () => {
 
   return (
     <div className="bg-accent py-16">
-      <h3 className="uppercase pb-4 ms-60">Follow us @Cycle_Wave</h3>
+      {/* <h3 className="uppercase pb-4 ms-60">Follow us @Cycle_Wave</h3> */}
       <section className="flex flex-col lg:flex-row justify-between items-center gap-6 px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {Images.map((item, idx) => (
