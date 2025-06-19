@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { z } from "zod";
 import { productFormSchema } from "../../../schemas/product-form-schema";
 import { UseFormReturn } from "react-hook-form";
@@ -9,9 +10,9 @@ import {
   FormLabel,
   FormMessage,
 } from "../../ui/form";
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
+
 import { Input } from "../../ui/input";
-import { Button } from "../../ui/button";
+
 import {
   Select,
   SelectContent,
@@ -20,6 +21,8 @@ import {
   SelectValue,
 } from "../../ui/select";
 import TextEditor from "../../editor/TextEditor";
+import { Button } from "../../ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 
 type FormValues = z.infer<typeof productFormSchema>;
 type MP_ProductFormProps = {
@@ -37,7 +40,7 @@ export default function MP_ProductForm({
   const imageRef = useRef<HTMLInputElement | null>(null);
   return (
     <div className="grid gap-4">
-      {/* {isImageUpload && (
+      {isImageUpload && (
         <FormField
           control={form.control}
           name="image"
@@ -82,7 +85,7 @@ export default function MP_ProductForm({
             </FormItem>
           )}
         />
-      )} */}
+      )}
       <div className="grid grid-cols-2 gap-4">
         <FormField
           control={form.control}

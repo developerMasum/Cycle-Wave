@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toast } from "sonner";
 import { config } from "../config/config";
 
@@ -27,6 +28,7 @@ export const uploadImageToCloudinary = async (
     );
 
     const data = await response.json();
+    console.log(data);
 
     if (data.secure_url) {
       return data.secure_url as string;
