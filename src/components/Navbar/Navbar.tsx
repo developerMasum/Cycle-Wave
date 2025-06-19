@@ -1,28 +1,26 @@
 import { FC } from "react";
-import { LogOut, ShoppingCart, User } from "lucide-react";
-
+import { LogOut, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import MyCartBtn from "./MyCartBtn";
 import { useTheme } from "../../providers/theme-provider";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { logout, selectCurrentUser } from "../../redux/features/auth/authSlice";
+import MyWishlistBtn from "./myWishBtn";
 import { ModeToggle } from "../ui/mode-toggle";
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import Profile from "../../pages/profile/Profile";
 import { Button } from "../ui/button";
 import Shop_FilterSheet from "../Shop/Shop_FilterSheet";
-import MyWishlistBtn from "./myWishBtn";
-import MyCartBtn from "./MyCartBtn";
-
 interface NavItem {
   label: string;
   href: string;
 }
-
 const navItems: NavItem[] = [
   { label: "Shop", href: "/shop" },
   { label: "Services", href: "/services" },
@@ -33,7 +31,6 @@ const Navbar: FC = () => {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
-  // console.log(user);
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -95,27 +92,23 @@ const Navbar: FC = () => {
                     size="icon"
                     className="rounded-full overflow-hidden border border-muted w-8 h-8 p-0"
                   >
-                    {/* <Profile /> */}
+                    <Profile />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                  {user.role === "user" && (
-                    <Link to="/profile">
-                      <DropdownMenuItem className="cursor-pointer">
-                        <User className="mr-2 h-4 w-4" />
-                        <span>My Profile</span>
-                      </DropdownMenuItem>
-                    </Link>
-                  )}
-                  {user.role === "user" && (
-                    <Link to="/my-orders">
-                      <DropdownMenuItem className="cursor-pointer">
-                        <ShoppingCart className="mr-2 h-4 w-4" />
-                        <span>My Orders</span>
-                      </DropdownMenuItem>
-                    </Link>
-                  )}
-
+                  <Link to="/profile">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>My Profile</span>
+                    </DropdownMenuItem>
+                  </Link>
+                  {/* {user.role === 'user' &&  */}
+                  <Link to="/my-orders">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <span>My Orders</span>
+                    </DropdownMenuItem>
+                  </Link>
+                  {/* } */}
                   {user && user.role === "admin" ? (
                     <Link to="/dashboard">
                       <DropdownMenuItem className="cursor-pointer">
