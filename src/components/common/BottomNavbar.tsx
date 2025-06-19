@@ -16,7 +16,7 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import Profile from "../../pages/profile/Profile";
+// import Profile from "../../pages/profile/Profile";
 import {
   DropdownMenuContent,
   DropdownMenuItem,
@@ -113,23 +113,28 @@ const BottomNavbar: FC = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger className="" asChild>
                   <div className="cursor-pointer flex flex-col">
-                    <Profile />
+                    {/* <Profile /> */}
+                    <User className="w-6 h-6" />
                     <span className="text-xs">You</span>
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                  <Link to="/profile">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <User className="mr-2 h-4 w-4" />
-                      <span>My Profile</span>
-                    </DropdownMenuItem>
-                  </Link>
-                  {/* {user.role === 'user' &&  */}
-                  <Link to="/my-orders">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <span>My Orders</span>
-                    </DropdownMenuItem>
-                  </Link>
+                  {user.role === "user" && (
+                    <Link to="/profile">
+                      <DropdownMenuItem className="cursor-pointer">
+                        <User className="mr-2 h-4 w-4" />
+                        <span>My Profile</span>
+                      </DropdownMenuItem>
+                    </Link>
+                  )}
+                  {user.role === "user" && (
+                    <Link to="/my-orders">
+                      <DropdownMenuItem className="cursor-pointer">
+                        <span>My Orders</span>
+                      </DropdownMenuItem>
+                    </Link>
+                  )}
+
                   {/* } */}
                   {user && user.role === "admin" ? (
                     <Link to="/dashboard">
