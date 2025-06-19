@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { LogOut, User } from "lucide-react";
+import { LogOut, ShoppingBag, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import MyCartBtn from "./MyCartBtn";
 import { useTheme } from "../../providers/theme-provider";
@@ -90,11 +90,12 @@ const Navbar: FC = () => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="rounded-full overflow-hidden border border-muted w-8 h-8 p-0"
+                    className="rounded-full border border-muted w-8 h-8 p-0"
                   >
-                    <Profile />
+                    <User className="w-4 h-4" />
                   </Button>
                 </DropdownMenuTrigger>
+
                 <DropdownMenuContent align="end" className="w-56">
                   <Link to="/profile">
                     <DropdownMenuItem className="cursor-pointer">
@@ -105,6 +106,7 @@ const Navbar: FC = () => {
                   {/* {user.role === 'user' &&  */}
                   <Link to="/my-orders">
                     <DropdownMenuItem className="cursor-pointer">
+                      <ShoppingBag className="mr-2 h-4 w-4" />
                       <span>My Orders</span>
                     </DropdownMenuItem>
                   </Link>
