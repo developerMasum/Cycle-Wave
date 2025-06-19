@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import Profile from "../../pages/profile/Profile";
+// import Profile from "../../pages/profile/Profile";
 import { Button } from "../ui/button";
 import Shop_FilterSheet from "../Shop/Shop_FilterSheet";
 interface NavItem {
