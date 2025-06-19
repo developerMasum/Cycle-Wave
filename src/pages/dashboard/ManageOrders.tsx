@@ -48,8 +48,8 @@ export default function ManageOrders() {
   const { data, isLoading } = useOrdersQuery(params);
 
   const isLoadingData = isLoading;
-  const orders = (data?.data?.data as any) || [];
-  // console.log(orders);
+  const orders = data?.data || [];
+  console.log(orders);
   const meta = data?.meta;
   const handleSorting = (field: string) => {
     if (!field) {

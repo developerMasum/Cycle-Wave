@@ -7,38 +7,43 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 const feedbacks = [
   {
-    name: "Sarah Khan",
-    role: "Marketing Executive, Dhaka",
+    name: "Maliha Rahman",
+    role: "Software Engineer, Dhaka",
     rating: 5,
     comment:
-      "Absolutely love the quality of the bikes! The service was quick and professional. Highly recommended!",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+      "Super smooth experience from browsing to delivery. The cycle looks premium and rides like a dream!",
+    image:
+      "https://res.cloudinary.com/dvqr7gds8/image/upload/v1715828636/xwgrlx6fq4kxz7oanfxt.png",
   },
   {
-    name: "Rashed Ahmed",
-    role: "Fitness Enthusiast, Chattogram",
+    name: "Farhan Adnan",
+    role: "University Student, Khulna",
     rating: 4,
     comment:
-      "Great value for money. The cycle I bought is smooth, stylish, and perfect for my daily commute.",
-    image: "https://randomuser.me/api/portraits/men/65.jpg",
+      "I use my bike every day to go to class. Very affordable and reliable. Great service from the team!",
+    image:
+      "https://portfolio-masum-fullstack.vercel.app/assets/me2-313232ed.jpg",
   },
   {
-    name: "Nadia Akter",
-    role: "Teacher, Sylhet",
+    name: "Fatema Jahan",
+    role: "Housewife, Barishal",
     rating: 5,
     comment:
-      "I purchased a bicycle for my son. The team helped me choose the perfect one. Very satisfied!",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
+      "Bought a cycle for my daughter. Excellent quality and friendly customer service. She’s loving it!",
+    image:
+      "https://res.cloudinary.com/dvqr7gds8/image/upload/v1715828621/n2dvvl6mj9ikfdueesvk.png",
   },
   {
-    name: "Tanvir Hossain",
-    role: "Delivery Rider, Rajshahi",
+    name: "Mehedi Hasan",
+    role: "Freelancer, Rangpur",
     rating: 4,
     comment:
-      "Durable and lightweight bikes. Made my delivery routes much easier. Highly functional!",
-    image: "https://randomuser.me/api/portraits/men/47.jpg",
+      "Wasn’t sure at first, but this site really impressed me. Fast delivery and a solid, stylish bike.",
+    image:
+      "https://res.cloudinary.com/dvqr7gds8/image/upload/v1714633517/fcb1b4ft5zgkexuf2drd.png",
   },
 ];
+
 const Feedback = () => {
   return (
     <section className="py-8">

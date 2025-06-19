@@ -1,7 +1,7 @@
 const App = () => {
   return (
     <div>
-      <h1> Welcome to cycle Craze</h1>
+      <h1> Welcome to Cycle Wave</h1>
     </div>
   );
 };

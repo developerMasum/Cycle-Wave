@@ -35,14 +35,14 @@ export default function Footer() {
                 <img
                   className="w-12 object-cover"
                   src={logoUrl}
-                  alt="CycleCraze Logo"
+                  alt="CycleWave Logo"
                 />
-                <span className="text-xl font-semibold">CycleCraze</span>
+                <span className="text-xl font-semibold">CycleWave</span>
               </Link>
             </div>
             <p className="text-sm text-muted-foreground">
               Discover high-quality bicycles at unbeatable prices. Whether
-              you're into mountain biking, hybrid rides, or e-bikes — CycleCraze
+              you're into mountain biking, hybrid rides, or e-bikes — CycleWave
               has something for every cyclist.
             </p>
             <Link to="/about" className="text-sm font-medium">
@@ -253,7 +253,7 @@ export default function Footer() {
             </Link>
           </div>
           <p className="text-sm text-center md:text-right">
-            Copyright © 2025 CycleCraze. All rights reserved.
+            Copyright © 2025 CycleWave. All rights reserved.
           </p>
           <div className="flex space-x-2 mt-4 md:mt-0">
             <div className="w-8 h-5 bg-blue-600 rounded"></div>

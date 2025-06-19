@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { UseFormReturn } from "react-hook-form";
+import { Control, FieldValues, UseFormReturn } from "react-hook-form";
 import { TUserData } from "../../../types";
 import { useRef } from "react";
 import {
@@ -34,7 +34,9 @@ export const EditUserForm = ({ form, userData, isLoading }: PropsType) => {
   return (
     <div className="flex flex-col sm:flex-row gap-6">
       <FormField
-        control={form.control}
+        control={
+          form.control as unknown as Control<FieldValues, any, FieldValues>
+        }
         name="profileImage"
         render={({ field }) => (
           <FormItem>
@@ -81,7 +83,9 @@ export const EditUserForm = ({ form, userData, isLoading }: PropsType) => {
 
       <div className="flex-1 space-y-4">
         <FormField
-          control={form.control}
+          control={
+            form.control as unknown as Control<FieldValues, any, FieldValues>
+          }
           name="name"
           render={({ field }) => (
             <FormItem>
@@ -102,7 +106,9 @@ export const EditUserForm = ({ form, userData, isLoading }: PropsType) => {
         />
 
         <FormField
-          control={form.control}
+          control={
+            form.control as unknown as Control<FieldValues, any, FieldValues>
+          }
           name="contactNumber"
           render={({ field }) => (
             <FormItem>
@@ -123,7 +129,9 @@ export const EditUserForm = ({ form, userData, isLoading }: PropsType) => {
         />
 
         <FormField
-          control={form.control}
+          control={
+            form.control as unknown as Control<FieldValues, any, FieldValues>
+          }
           name="address"
           render={({ field }) => (
             <FormItem>

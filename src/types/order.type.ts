@@ -24,14 +24,24 @@ export interface IOrder {
     name: string;
   }[];
   totalPrice: number;
-  status: "Pending" | "Confirmed" | "Shipped" | "Delivered" | "Cancelled"; // Extend as needed
-  paymentStatus: "Pending" | "Paid" | "Failed"; // Extend as needed
+  status: "Pending" | "Confirmed" | "Shipped" | "Delivered" | "Cancelled";
+  paymentStatus: "Pending" | "Paid" | "Failed";
   transactionId: string;
-  paymentMethod: "Cash On Delivery" | "Online Payment"; // Extend as needed
+  paymentMethod: "Cash On Delivery" | "Online Payment";
   deliveryCharge: number;
   createdAt: string;
   updatedAt: string;
   __v: number;
+}
+
+export interface IOrderPaginatedResult {
+  meta: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPage: number;
+  };
+  data: IOrder[];
 }
 
 export type OrderDataType = {

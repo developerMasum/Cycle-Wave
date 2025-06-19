@@ -6,7 +6,7 @@ const StatusProgress = ({
 }: {
   status: (typeof order_status)[number];
 }) => {
-  const activeProcessing = status === "DELIVERED" || status === "SHIPPED";
+  const activeProcessing = status === "Delivered" || status === "Shipped";
 
   return (
     <div className="flex gap-1 justify-center items-center xs:px-5 pb-5">
@@ -47,12 +47,12 @@ const StatusProgress = ({
       <div className="flex items-center gap-1">
         <div
           className={`w-10 h-[5px] xs:w-20 xs:h-1.5 sm:w-28 sm:h-2 border border-primary rounded-full ${
-            status === "DELIVERED" ? "bg-primary" : ""
+            status === "Delivered" ? "bg-primary" : ""
           }`}
         ></div>
         <div
           className={`size-12 sm:size-16 border-primary rounded-full border flex justify-center items-center relative ${
-            status === "DELIVERED"
+            status === "Delivered"
               ? "bg-primary text-white"
               : " text-muted-foreground"
           }`}

@@ -22,7 +22,7 @@ export default function ContactInfoCard() {
     {
       icon: <Mail className="h-5 w-5 text-primary mt-1 mr-3" />,
       title: "Email",
-      details: ["info@cyclecraze.com", "We aim to respond within 24 hours"],
+      details: ["info@CycleWave.com", "We aim to respond within 24 hours"],
     },
     {
       icon: <MessageSquare className="h-5 w-5 text-primary mt-1 mr-3" />,

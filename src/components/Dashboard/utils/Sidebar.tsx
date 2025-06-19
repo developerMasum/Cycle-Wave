@@ -52,7 +52,7 @@ export const Sidebar = () => {
         >
           <img className="w-8 object-cover" src={logoUrl} alt="" />
           {!collapsed && (
-            <span className="text-sm font-semibold">CycleCraze</span>
+            <span className="text-sm font-semibold">CycleWave</span>
           )}
         </Link>
 

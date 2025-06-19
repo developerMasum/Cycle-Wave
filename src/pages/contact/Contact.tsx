@@ -10,7 +10,7 @@ const Contact = () => {
     <section className="py-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold tracking-tight">
-          Contact Cycle Craze
+          Contact Cycle Wave
         </h1>
         <p className="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">
           We're here to help with all your cycling needs. Reach out to our team

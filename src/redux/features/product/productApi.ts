@@ -70,7 +70,7 @@ const productApi = baseApi.injectEndpoints({
     // PATCH /products/:productId
     updateProduct: builder.mutation({
       query: ({ productId, updatedData }) => ({
-        url: `/products/${productId}`,
+        url: `/product/${productId}`,
         method: "PATCH",
         body: updatedData,
       }),
@@ -83,7 +83,7 @@ const productApi = baseApi.injectEndpoints({
     // DELETE /products/:productId
     deleteProduct: builder.mutation({
       query: (productId: string) => ({
-        url: `/products/${productId}`,
+        url: `/product/${productId}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Products"],

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Pencil,
   Trash,
@@ -33,12 +34,12 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "../../ui/alert-dialog";
-import EditProduct from "./MP_ProductForm";
+
 import MP_EditSpecification from "./MP_EditSpecification";
 // import MP_EditSpecification from "./MP_EditSpecification";
 export default function MP_SingleProduct({ product }: { product: IProduct }) {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [, setIsEditOpen] = useState(false);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [specificationOpen, setSpecificationOpen] = useState(false);
   const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();

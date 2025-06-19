@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Icons
 import {
   MoreHorizontal,
@@ -45,7 +46,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "../../ui/alert-dialog";
-import { IOrder } from "../../../types";
 import { Separator } from "../../ui/separator";
 import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
 import {
@@ -61,7 +61,7 @@ export default function MO_SingleOrder({
   order,
   index,
 }: {
-  order: IOrder;
+  order: any;
   index: number;
 }) {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);

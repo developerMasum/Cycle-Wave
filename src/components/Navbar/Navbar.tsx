@@ -57,7 +57,7 @@ const Navbar: FC = () => {
           {/* Logo and company name */}
           <Link to={"/"} className="flex items-center gap-1">
             <img className="w-9 object-cover" src={logoUrl} alt="" />
-            <span className="text-lg font-semibold">CycleCraze</span>
+            <span className="text-lg font-semibold">CycleWave</span>
           </Link>
 
           {/* Desktop Navigation */}
