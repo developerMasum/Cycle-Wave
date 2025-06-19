@@ -45,7 +45,7 @@ export default function Footer() {
               you're into mountain biking, hybrid rides, or e-bikes — CycleWave
               has something for every cyclist.
             </p>
-            <Link to="/about" className="text-sm font-medium">
+            <Link to="/contact" className="text-sm font-medium">
               Read More About Shop
             </Link>
           </div>

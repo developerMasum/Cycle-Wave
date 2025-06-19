@@ -1,4 +1,4 @@
-import { ChevronRightCircle, Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
 const FollowUs = () => {
   const Images = [

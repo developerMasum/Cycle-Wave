@@ -17,7 +17,7 @@ export default function ContactInfoCard() {
     {
       icon: <Phone className="h-5 w-5 text-primary mt-1 mr-3" />,
       title: "Phone",
-      details: ["(555) 123-4567", "Mon-Sat: 9am-6pm"],
+      details: ["+8801704987382", "Mon-Sat: 9am-6pm"],
     },
     {
       icon: <Mail className="h-5 w-5 text-primary mt-1 mr-3" />,
