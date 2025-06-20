@@ -47,7 +47,7 @@ export default function Login() {
   const [login, { isLoading }] = useLoginMutation();
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
-  // Initialize form with TypeScript types
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,7 +56,6 @@ export default function Login() {
     },
   });
 
-  // Form submission handler
   const onSubmit = async (data: FormValues) => {
     const toastId = toast.loading("Logging in...");
 
@@ -70,6 +69,31 @@ export default function Login() {
         })
       );
       toast.success("Logged in successfully!", { id: toastId, duration: 2000 });
+      navigate("/");
+    } catch (err) {
+      toast.error(errorMessageGenerator(err), { id: toastId });
+    }
+  };
+
+  const handleAdminLogin = async () => {
+    const toastId = toast.loading("Logging in as Admin...");
+
+    try {
+      const res = await login({
+        email: "farhan@gmail.com",
+        password: "123456@@Aa",
+      }).unwrap();
+      const user = verifyToken(res.data.accessToken) as TUser;
+      dispatch(
+        setUser({
+          user,
+          token: res.data.accessToken,
+        })
+      );
+      toast.success("Logged in successfully as Admin!", {
+        id: toastId,
+        duration: 2000,
+      });
       navigate("/");
     } catch (err) {
       toast.error(errorMessageGenerator(err), { id: toastId });
@@ -122,7 +146,7 @@ export default function Login() {
                     <div className="flex gap-2">
                       <Input
                         placeholder={`${showPass ? "Password" : "*******"}`}
-                        type={`${showPass ? "text" : "password"}`}
+                        type={showPass ? "text" : "password"}
                         autoComplete="current-password"
                         disabled={isLoading}
                         className="bg-gray-50"
@@ -149,7 +173,7 @@ export default function Login() {
                 />
                 <label
                   htmlFor="remember-me"
-                  className="ml-2 block text-sm  text-muted-foreground"
+                  className="ml-2 block text-sm text-muted-foreground"
                 >
                   Remember me
                 </label>
@@ -172,6 +196,23 @@ export default function Login() {
                 </>
               ) : (
                 "Sign in"
+              )}
+            </Button>
+
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full"
+              onClick={handleAdminLogin}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Continuing...
+                </>
+              ) : (
+                "Continue as Admin"
               )}
             </Button>
           </form>
