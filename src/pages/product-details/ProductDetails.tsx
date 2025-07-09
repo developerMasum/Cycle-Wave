@@ -93,7 +93,7 @@ export default function ProductDetails() {
     <section className="py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <PD_ImageSlider
-          id={productData?._id as string}
+          id={productData?.id as string}
           images={productData?.images || []}
         />
         {productData && <PD_RightSideDetails product={productData} />}

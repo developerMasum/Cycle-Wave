@@ -11,6 +11,6 @@
 //   const { data, isLoading: isAdminLoading } = useMyDataQuery(undefined, {
 //     skip: !token,
 //   });
-//   const isAdmin = user && data?.data?.role === "admin";
+//   const isAdmin = user && data?.data?.role === "ADMIN";
 //   return [isAdmin, isAdminLoading] as const;
 // }

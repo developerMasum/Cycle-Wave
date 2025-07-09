@@ -42,7 +42,7 @@ export default function CEO_SingleProduct({
   const dispatch = useAppDispatch();
   const handleIncrease = async () => {
     if (!productQuantity) {
-      const productId = product._id;
+      const productId = product.id;
       try {
         setIsLoading(true);
         const { data } = await axios.get(
@@ -55,7 +55,7 @@ export default function CEO_SingleProduct({
           return;
         }
         dispatch(
-          increaseQuantity({ id: product._id, quantity: productData.quantity })
+          increaseQuantity({ id: product.id, quantity: productData.quantity })
         );
         setProductQuantity(productData.quantity);
         setIsLoading(false);
@@ -64,17 +64,15 @@ export default function CEO_SingleProduct({
         setIsLoading(false);
       }
     } else {
-      dispatch(
-        increaseQuantity({ id: product._id, quantity: productQuantity })
-      );
+      dispatch(increaseQuantity({ id: product.id, quantity: productQuantity }));
     }
   };
 
   const handleDecrease = () => {
-    dispatch(decreaseQuantity(product._id));
+    dispatch(decreaseQuantity(product.id));
   };
   const handleRemove = () => {
-    dispatch(removeProduct(product._id));
+    dispatch(removeProduct(product.id));
   };
   return (
     <div className="relative flex flex-col gap-2">

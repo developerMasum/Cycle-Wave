@@ -113,7 +113,7 @@ export default function MyCartBtn() {
           ) : (
             <ul className="divide-y">
               {cartProducts.map((product) => (
-                <MCB_SingleProduct product={product} key={product._id} />
+                <MCB_SingleProduct product={product} key={product.id} />
               ))}
             </ul>
           )}

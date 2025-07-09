@@ -48,7 +48,7 @@ export default function MP_SingleProduct({ product }: { product: IProduct }) {
       `"${product.name}" is Deleting from the database...`
     );
     try {
-      await deleteProduct(product._id).unwrap();
+      await deleteProduct(product.id).unwrap();
       toast.success("Product deleted successfully", { id: toastId });
     } catch (error) {
       toast.error(errorMessageGenerator(error), { id: toastId });
@@ -181,7 +181,7 @@ export default function MP_SingleProduct({ product }: { product: IProduct }) {
         isDialogOpen={galleryOpen}
         setIsDialogOpen={setGalleryOpen}
         images={product.images}
-        productId={product._id}
+        productId={product.id}
       />
       <MP_EditSpecification
         isDialogOpen={specificationOpen}

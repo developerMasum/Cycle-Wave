@@ -99,7 +99,7 @@ export default function BestSellingProducts() {
           >
             {bikes?.map((bike, idx) => (
               <SwiperSlide key={idx}>
-                <Link to={`/details/${bike?._id}`}>
+                <Link to={`/details/${bike?.id}`}>
                   <Card className="group relative overflow-hidden border bg-background shadow-sm transition-all duration-300 hover:shadow-md">
                     <CardContent className="p-4">
                       <div className="relative h-40 rounded-xl overflow-hidden">

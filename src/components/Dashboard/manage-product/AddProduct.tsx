@@ -48,7 +48,7 @@ export default function AddProduct() {
   const onSubmit = async (data: z.infer<typeof productFormSchema>) => {
     const toastId = toast.loading("Product is creating...");
 
-    const productNewData: Omit<IProduct, "_id"> = {
+    const productNewData: Omit<IProduct, "id"> = {
       brand: data.brand,
       price: data.price,
       category: data.category,

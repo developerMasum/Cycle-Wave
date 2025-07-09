@@ -39,7 +39,7 @@ export default function OS_OrderDetails({ orderData }: { orderData: any }) {
         <div className="flex items-center gap-2">
           <p className="text-sm text-gray-500">Order Number:</p>
           <Badge variant="secondary" className="text-sm font-semibold py-1">
-            {orderData._id}
+            {orderData.id}
           </Badge>
         </div>
       </div>
@@ -80,7 +80,7 @@ export default function OS_OrderDetails({ orderData }: { orderData: any }) {
                 {orderData?.products?.map((item: any) => {
                   const product = item.product;
                   return (
-                    <div key={product?._id} className="flex items-center gap-4">
+                    <div key={product?.id} className="flex items-center gap-4">
                       <img
                         src={product.images[0]}
                         alt={item.name}

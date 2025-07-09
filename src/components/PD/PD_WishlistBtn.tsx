@@ -17,7 +17,7 @@ export default function PD_WishlistBtn({
 }) {
   const dispatch = useAppDispatch();
   const wishlistProduct = useAppSelector(selectCurrentWishlistProducts);
-  const isInWIshlist = wishlistProduct.find((item) => item._id === data._id);
+  const isInWIshlist = wishlistProduct.find((item) => item.id === data.id);
   const handleAddToWishList = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     dispatch(addToWishList(data));

@@ -34,7 +34,7 @@ export default function PD_RightSideDetails({
   };
   const handleAddToCart = () => {
     const cartProduct: CartProduct = {
-      _id: product._id,
+      id: product.id,
       image: product.images[0],
       name: product.name,
       orderQuantity: quantity,
@@ -51,7 +51,7 @@ export default function PD_RightSideDetails({
     navigate("/checkout");
   };
   const wishListData = {
-    _id: product._id,
+    id: product.id,
     name: product.name,
     image: product.images[0],
     brand: product.brand,

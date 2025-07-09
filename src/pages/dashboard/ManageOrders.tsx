@@ -49,7 +49,7 @@ export default function ManageOrders() {
 
   const isLoadingData = isLoading;
   const orders = data?.data || [];
-  console.log(orders);
+  console.log(data);
   const meta = data?.meta;
   const handleSorting = (field: string) => {
     if (!field) {
@@ -141,7 +141,7 @@ export default function ManageOrders() {
                 <DropdownMenu>
                   <DropdownMenuTrigger className="w-full cursor-pointer">
                     <div className="flex gap-2 items-center justify-between">
-                      Status <ChevronsUpDown size={16} />
+                      Payment Status <ChevronsUpDown size={16} />
                     </div>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
@@ -195,7 +195,7 @@ export default function ManageOrders() {
           </TableHeader>
           <TableBody>
             {orders?.map((order: any, idx: number) => (
-              <MO_SingleOrder key={order._id} order={order} index={idx + 1} />
+              <MO_SingleOrder key={order.id} order={order} index={idx + 1} />
             ))}
           </TableBody>
         </Table>

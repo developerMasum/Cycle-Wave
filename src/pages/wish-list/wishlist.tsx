@@ -42,7 +42,7 @@ export default function Wishlist() {
   const dispatch = useAppDispatch();
   const wishlistProducts = useAppSelector(selectCurrentWishlistProducts);
   const finalCheckedProducts = checkedProducts.filter((item) => {
-    const isItemExist = wishlistProducts.find((p) => p._id === item._id);
+    const isItemExist = wishlistProducts.find((p) => p.id === item.id);
     return isItemExist ? true : false;
   });
 
@@ -77,15 +77,15 @@ export default function Wishlist() {
       try {
         const productItem = await axios.get(
           `${import.meta.env.VITE_BACKEND_API}/products/${
-            item._id
+            item.id
           }?fields=quantity,name,images,price,brand`
         );
         const productItemData: IProduct = productItem.data.data;
 
-        if (productItemData?._id) {
+        if (productItemData?.id) {
           addToCartProduct.push({
             product: {
-              _id: productItemData._id,
+              id: productItemData.id,
               name: productItemData.name,
               orderQuantity: 1,
               image: productItemData.images[0],
@@ -161,7 +161,7 @@ export default function Wishlist() {
             <TableBody>
               {wishlistProducts.map((product) => (
                 <WishlistRow
-                  key={product._id}
+                  key={product.id}
                   product={product}
                   checkedProducts={finalCheckedProducts}
                   setCheckedProducts={setCheckedProducts}

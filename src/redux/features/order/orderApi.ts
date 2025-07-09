@@ -24,8 +24,8 @@ const orderApi = baseApi.injectEndpoints({
       }),
     }),
     myOrders: builder.query({
-      query: (orderId: string) => ({
-        url: `/orders/my-orders/${orderId}`,
+      query: () => ({
+        url: "/orders/my/my-orders",
         method: "GET",
       }),
       providesTags: (_result, _error, orderId) => [

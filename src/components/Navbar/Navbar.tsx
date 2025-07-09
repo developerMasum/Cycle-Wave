@@ -68,7 +68,7 @@ const Navbar: FC = () => {
                 {item.label}
               </Link>
             ))}
-            {user && user?.role === "admin" ? (
+            {user && user?.role === "ADMIN" ? (
               <Link
                 to="/dashboard"
                 className="text-sm font-medium hover:text-primary transition-colors"
@@ -111,7 +111,7 @@ const Navbar: FC = () => {
                     </DropdownMenuItem>
                   </Link>
                   {/* } */}
-                  {user && user.role === "admin" ? (
+                  {user && user.role === "ADMIN" ? (
                     <Link to="/dashboard">
                       <DropdownMenuItem className="cursor-pointer">
                         <span>Dashboard</span>

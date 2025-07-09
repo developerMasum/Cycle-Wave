@@ -119,7 +119,7 @@ const BottomNavbar: FC = () => {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
-                  {user.role === "user" && (
+                  {user.role === "USER" && (
                     <Link to="/profile">
                       <DropdownMenuItem className="cursor-pointer">
                         <User className="mr-2 h-4 w-4" />
@@ -127,7 +127,7 @@ const BottomNavbar: FC = () => {
                       </DropdownMenuItem>
                     </Link>
                   )}
-                  {user.role === "user" && (
+                  {user.role === "USER" && (
                     <Link to="/my-orders">
                       <DropdownMenuItem className="cursor-pointer">
                         <span>My Orders</span>
@@ -136,7 +136,7 @@ const BottomNavbar: FC = () => {
                   )}
 
                   {/* } */}
-                  {user && user.role === "admin" ? (
+                  {user && user.role === "ADMIN" ? (
                     <Link to="/dashboard">
                       <DropdownMenuItem className="cursor-pointer">
                         <span>Dashboard</span>

@@ -25,9 +25,7 @@ const cartSlice = createSlice({
       if (quantity < 1) {
         toast.error("Product is out of stock..");
       } else {
-        const existing = state.products.find(
-          (item) => item?._id === product._id
-        );
+        const existing = state.products.find((item) => item?.id === product.id);
         if (existing) {
           const totalQuantity = existing.orderQuantity + product.orderQuantity;
           existing.orderQuantity =
@@ -49,7 +47,7 @@ const cartSlice = createSlice({
       action: PayloadAction<{ id: string; quantity: number }>
     ) => {
       const { id, quantity } = action.payload;
-      const item = state.products.find((product) => product._id === id);
+      const item = state.products.find((product) => product.id === id);
       if (item && item.orderQuantity < quantity) {
         item.orderQuantity += 1;
       }
@@ -57,7 +55,7 @@ const cartSlice = createSlice({
 
     decreaseQuantity: (state, action: PayloadAction<string>) => {
       const id = action.payload;
-      const item = state.products.find((product) => product._id === id);
+      const item = state.products.find((product) => product.id === id);
       if (item && item.orderQuantity > 1) {
         item.orderQuantity -= 1;
       }
@@ -65,7 +63,7 @@ const cartSlice = createSlice({
 
     removeProduct: (state, action: PayloadAction<string>) => {
       const id = action.payload;
-      state.products = state.products.filter((item) => item._id !== id);
+      state.products = state.products.filter((item) => item.id !== id);
     },
 
     clearCart: (state) => {

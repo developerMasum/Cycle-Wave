@@ -29,22 +29,21 @@ export default function WishlistRow({
   const dispatch = useAppDispatch();
   const { data, isLoading } = useProductQuery(
     {
-      productId: product._id,
+      productId: product.id,
       args: [{ name: "fields", value: "price,quantity" }],
     },
     {
-      skip: !product._id,
+      skip: !product.id,
     }
   );
 
-  const isChecked = checkedProducts.find((item) => item._id === product._id)
-    ?._id
+  const isChecked = checkedProducts.find((item) => item.id === product.id)?.id
     ? true
     : false;
   const handleCheckedChange = () => {
     if (isChecked) {
       const newCheckedProducts = checkedProducts.filter(
-        (item) => item._id !== product._id
+        (item) => item.id !== product.id
       );
       setCheckedProducts(newCheckedProducts);
     } else {
@@ -53,7 +52,7 @@ export default function WishlistRow({
     }
   };
   const handleRemoveFromWishlist = () => {
-    dispatch(removeFromWishList(product._id));
+    dispatch(removeFromWishList(product.id));
   };
   return (
     <TableRow className="relative">
@@ -123,7 +122,7 @@ export default function WishlistRow({
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link to={`/details/${product._id}`}>
+              <Link to={`/details/${product.id}`}>
                 {" "}
                 <Button variant={"outline"} size={"icon"}>
                   <SquareChartGantt />

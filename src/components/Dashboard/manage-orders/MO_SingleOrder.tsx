@@ -79,7 +79,7 @@ export default function MO_SingleOrder({
     );
 
     try {
-      await updateStatus({ orderId: order._id, status: value }).unwrap();
+      await updateStatus({ orderId: order.id, status: value }).unwrap();
       toast.success(
         `Status updated to "${value.charAt(0) + value.slice(1).toLowerCase()}"`,
         { id: toastId }
@@ -93,10 +93,18 @@ export default function MO_SingleOrder({
     const toastId = toast.loading(`Deleting order...`);
 
     try {
-      await deleteOrders(order._id).unwrap();
+      await deleteOrders(order.id).unwrap();
       toast.success(`Order deleted successfully`, { id: toastId });
-    } catch (error) {
-      toast.error(errorMessageGenerator(error), { id: toastId });
+    } catch (error: any) {
+      console.error(error);
+
+      const message =
+        error?.data?.message || // RTK Query-style error
+        error?.response?.data?.message || // Axios-style error
+        error?.message || // Standard JS Error
+        "Failed to delete order";
+
+      toast.error(message, { id: toastId });
     }
   };
 
@@ -115,21 +123,21 @@ export default function MO_SingleOrder({
           <div className="space-y-1">
             <div className="flex items-center space-x-1 text-foreground">
               <UserIcon className="h-3 w-3" />
-              <p className="font-medium text-sm">{order.user.name}</p>
+              <p className="font-medium text-sm">{order?.name}</p>
             </div>
 
             <div className="flex items-center space-x-1 text-foreground/70">
               <PhoneIcon className="h-3 w-3" />
-              <p className="text-sm">{order.user.phone}</p>
+              <p className="text-sm">{order?.contact}</p>
             </div>
 
             <div className="flex items-center space-x-1 text-foreground/70">
               <HomeIcon className="h-3 w-3" />
               <p
                 className="text-sm truncate max-w-[150px]"
-                title={order.user.address}
+                title={order?.address}
               >
-                {order.user.address}
+                {order?.address}
               </p>
             </div>
           </div>
@@ -233,26 +241,26 @@ export default function MO_SingleOrder({
                   value={order.status}
                   onValueChange={handleStatusChange}
                 >
-                  {order_status.map((status) => (
+                  {order_status?.map((status) => (
                     <div
                       key={status}
                       className="flex items-center space-x-2 rounded-md py-1 px-2 hover:bg-foreground/10"
                     >
                       <RadioGroupItem
                         value={status}
-                        id={`${order._id}-${status}`}
+                        id={`${order.id}-${status}`}
                       />
                       <Label
-                        htmlFor={`${order._id}-${status}`}
+                        htmlFor={`${order.id}-${status}`}
                         className="text-sm font-medium cursor-pointer flex items-center"
                       >
-                        {status === "Pending" && (
+                        {status === "PENDING" && (
                           <ClockIcon className="h-3 w-3 mr-2 text-amber-600" />
                         )}
-                        {status === "Shipped" && (
+                        {status === "SHIPPED" && (
                           <TruckIcon className="h-3 w-3 mr-2 text-blue-600" />
                         )}
-                        {status === "Delivered" && (
+                        {status === "COMPLETED" && (
                           <CheckCircleIcon className="h-3 w-3 mr-2 text-green-600" />
                         )}
                         {status.charAt(0) + status.slice(1).toLowerCase()}
@@ -303,7 +311,7 @@ export default function MO_SingleOrder({
           <DialogHeader>
             <DialogTitle>Order Details</DialogTitle>
             <DialogDescription>
-              <MO_OrderDetails id={order._id} />
+              <MO_OrderDetails id={order.id} />
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

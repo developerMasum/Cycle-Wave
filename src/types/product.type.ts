@@ -9,7 +9,7 @@ export type TSpecification = {
 };
 
 export interface IProduct {
-  _id: string;
+  id: string;
   name: string;
   brand: string;
   price: number;

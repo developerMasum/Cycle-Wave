@@ -19,7 +19,7 @@ const wishlistSlice = createSlice({
       action: PayloadAction<Omit<WishlistProductType, "addedTime">>
     ) => {
       const product = action.payload;
-      const existing = state.products.find((item) => item?._id === product._id);
+      const existing = state.products.find((item) => item?.id === product.id);
       if (existing) {
         toast.message("Already added to wishlist!");
       } else {
@@ -32,7 +32,7 @@ const wishlistSlice = createSlice({
     },
     removeFromWishList: (state, action: PayloadAction<string>) => {
       const newProducts = state.products.filter(
-        (item) => item._id !== action.payload
+        (item) => item.id !== action.payload
       );
       state.products = newProducts;
       toast.message("Product has removed from wishlist.");

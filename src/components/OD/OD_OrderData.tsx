@@ -18,7 +18,7 @@ const OD_OrderData = ({ orderData }: { orderData: any }) => {
           <div className="flex justify-between items-center">
             <CardTitle>
               Order #
-              {orderData._id.substring(orderData._id.length - 8).toUpperCase()}
+              {orderData.id.substring(orderData.id.length - 8).toUpperCase()}
             </CardTitle>
           </div>
           <div className="text-sm text-muted-foreground">
@@ -75,7 +75,7 @@ const OD_OrderData = ({ orderData }: { orderData: any }) => {
             <div className="space-y-4">
               {orderData?.products?.map((item: any) => (
                 <div
-                  key={item?.product?._id}
+                  key={item?.product?.id}
                   className="flex justify-between items-center p-4 border rounded-lg"
                 >
                   <div className="flex gap-4">

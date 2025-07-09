@@ -1,8 +1,11 @@
-import { ShieldCheckIcon, UserIcon } from "lucide-react"; // More meaningful icons
+import { ShieldCheckIcon, UserIcon } from "lucide-react";
 import { TRole } from "../../../types";
 import { Badge } from "../../ui/badge";
 
-const UserRoleBadge = ({ role }: { role: TRole }) => {
+const UserRoleBadge = ({ role }: { role: TRole | undefined }) => {
+  console.log("role", role);
+  if (!role) return null;
+
   const statusConfig = {
     user: {
       icon: <UserIcon className="h-4 w-4 mr-1" />,

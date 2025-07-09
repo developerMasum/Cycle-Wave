@@ -10,7 +10,7 @@ export interface IOrderedProduct {
 }
 
 export interface IOrder {
-  _id: string;
+  id: string;
   user: {
     name: string;
     email: string;
@@ -18,7 +18,7 @@ export interface IOrder {
     address: string;
   };
   products: {
-    _id: string;
+    id: string;
     product: string;
     quantity: number;
     name: string;
@@ -56,5 +56,6 @@ export type OrderDataType = {
   contact: string;
   email?: string;
   userId?: string;
+  deliveryCharge?: number;
   paymentMethod: (typeof paymentMethod)[number];
 };

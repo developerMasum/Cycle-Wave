@@ -248,7 +248,7 @@ export const ManageProducts = () => {
             </TableHeader>
             <TableBody>
               {products.map((product) => (
-                <MP_SingleProduct key={product._id} product={product} />
+                <MP_SingleProduct key={product.id} product={product} />
               ))}
             </TableBody>
           </Table>

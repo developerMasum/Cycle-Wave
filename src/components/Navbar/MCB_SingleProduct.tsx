@@ -23,7 +23,7 @@ export default function MCB_SingleProduct({ product }: PropsType) {
   const dispatch = useAppDispatch();
   const handleIncrease = async () => {
     if (!productQuantity) {
-      const productId = product._id;
+      const productId = product.id;
       try {
         setIsLoading(true);
         const { data } = await axios.get(
@@ -36,7 +36,7 @@ export default function MCB_SingleProduct({ product }: PropsType) {
           return;
         }
         dispatch(
-          increaseQuantity({ id: product._id, quantity: productData.quantity })
+          increaseQuantity({ id: product.id, quantity: productData.quantity })
         );
         setProductQuantity(productData.quantity);
         setIsLoading(false);
@@ -45,18 +45,16 @@ export default function MCB_SingleProduct({ product }: PropsType) {
         setIsLoading(false);
       }
     } else {
-      dispatch(
-        increaseQuantity({ id: product._id, quantity: productQuantity })
-      );
+      dispatch(increaseQuantity({ id: product.id, quantity: productQuantity }));
     }
   };
 
   const handleDecrease = () => {
-    dispatch(decreaseQuantity(product._id));
+    dispatch(decreaseQuantity(product.id));
   };
 
   const handleRemove = () => {
-    dispatch(removeProduct(product._id));
+    dispatch(removeProduct(product.id));
   };
   return (
     <li className="py-4 relative">

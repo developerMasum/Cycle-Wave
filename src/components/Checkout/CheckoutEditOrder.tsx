@@ -36,7 +36,7 @@ export default function CheckoutEditOrder({
           {cartProducts.map((product) => (
             <CEO_SingleProduct
               product={product}
-              key={product._id}
+              key={product.id}
               isProcessing={isProcessing}
               productsLength={cartProducts.length}
             />

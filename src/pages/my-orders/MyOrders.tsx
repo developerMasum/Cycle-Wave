@@ -76,12 +76,12 @@ export default function MyOrders() {
 
       <div className="space-y-4">
         {data?.data?.map((order: any) => (
-          <Link key={order._id} to={`/order-details/${order._id}`}>
+          <Link key={order.id} to={`/order-details/${order.id}`}>
             <Card className="group mb-4">
               <CardHeader className="pb-2">
                 <div className="flex justify-between items-center">
                   <CardTitle className="text-lg">
-                    Order #{order._id.substring(order._id.length - 8)}
+                    Order #{order.id.substring(order.id.length - 8)}
                   </CardTitle>
                   <MO_StatusBadge status={order.status} />
                 </div>

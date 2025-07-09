@@ -47,7 +47,7 @@ export default function MP_EditSpecification({
     }));
     try {
       await updateProduct({
-        productId: product._id,
+        productId: product.id,
         updatedData: { specifications: newSpecifications },
       }).unwrap();
       toast.success("Specifications updated successfully!", {

@@ -62,22 +62,21 @@ export default function EditProduct({
   });
 
   const onSubmit = async (data: z.infer<typeof updateProductFormSchema>) => {
-    const productNewData: Omit<IProduct, "_id" | "images" | "specifications"> =
-      {
-        brand: data.brand,
-        price: data.price,
-        category: data.category,
-        description: data.description,
-        frameMaterial: data.frameMaterial,
-        name: data.name,
-        quantity: data.quantity,
-        wheelSize: data.wheelSize,
-      };
+    const productNewData: Omit<IProduct, "id" | "images" | "specifications"> = {
+      brand: data.brand,
+      price: data.price,
+      category: data.category,
+      description: data.description,
+      frameMaterial: data.frameMaterial,
+      name: data.name,
+      quantity: data.quantity,
+      wheelSize: data.wheelSize,
+    };
     const toastId = toast.loading("Product is updating...");
 
     try {
       await updateProduct({
-        productId: product._id,
+        productId: product.id,
         updatedData: productNewData,
       }).unwrap();
       toast.success("Product updated successfully!", {

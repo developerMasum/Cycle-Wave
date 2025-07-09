@@ -40,6 +40,7 @@ export const ManageUsers = () => {
   const isLoadingData = isLoading;
   const users = data?.data || [];
   const meta = data?.meta;
+  console.log(users);
   const handleSorting = (field: string) => {
     if (!field) {
       searchParams.delete("sort");
@@ -139,7 +140,7 @@ export const ManageUsers = () => {
           <TableBody>
             {users.length > 0 ? (
               users.map((user, index) => (
-                <MU_SingleUser user={user} index={index} key={user._id} />
+                <MU_SingleUser user={user} index={index} key={user.id} />
               ))
             ) : (
               <TableRow>

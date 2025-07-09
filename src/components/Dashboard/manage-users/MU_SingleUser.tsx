@@ -20,13 +20,14 @@ export const MU_SingleUser = ({
   const handleUserBlockStatusChange = async () => {
     const toastId = toast.loading("Changing Block Status...");
     try {
-      await toggleState(user._id).unwrap();
+      await toggleState(user.id).unwrap();
 
       toast.success("Block Status Changed Successfully!!", { id: toastId });
     } catch (error) {
       toast.error(errorMessageGenerator(error), { id: toastId });
     }
   };
+  // console.log(user);
   return (
     <TableRow>
       <TableCell>{index + 1}</TableCell>

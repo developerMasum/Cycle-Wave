@@ -59,7 +59,7 @@ export default function CheckoutForm({
   );
   const onSubmit = async (data: FormValues) => {
     const orderedProducts = cartProducts.map((product) => ({
-      product: product._id,
+      product: product.id,
       quantity: product.orderQuantity,
       name: product.name,
     }));
@@ -72,7 +72,11 @@ export default function CheckoutForm({
       name: data.name,
       contact: data.contact,
       paymentMethod: data.paymentMethod,
+      userId: userData?.id,
+      deliveryCharge: 120,
     };
+
+    console.log("orderData", orderData);
     if (userData?.email) {
       orderData.email = userData?.email;
     }
@@ -80,7 +84,7 @@ export default function CheckoutForm({
     try {
       const result = await checkout(orderData).unwrap();
       if (orderData.paymentMethod === "Cash On Delivery") {
-        const id = result.data._id;
+        const id = result.data.id;
         window.location.replace(`/checkout/COD/success/${id}`);
       } else {
         window.location.href = result?.data?.payment_url;

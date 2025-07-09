@@ -10,7 +10,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
   return (
     <Card className="overflow-hidden group transition-all duration-300 hover:shadow-lg pt-0 gap-y-2 sm:gap-y-6">
       <div className="relative bg-gray-50 py-1 flex justify-center items-center overflow-hidden">
-        <Link to={`/details/${product._id}`} className="w-full">
+        <Link to={`/details/${product.id}`} className="w-full">
           <img
             src={product.images?.[0]}
             alt={product.name}
@@ -38,7 +38,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
           <PD_WishlistBtn
             size="sm"
             data={{
-              _id: product._id,
+              id: product.id,
               name: product.name,
               brand: product.name,
               image: product.images[0],
@@ -46,7 +46,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
           />
         </div>
 
-        <Link to={`/details/${product._id}`}>
+        <Link to={`/details/${product.id}`}>
           <h5 className="line-clamp-1 hover:text-primary transition-colors text-sm sm:text-lg">
             {product.name}
           </h5>
@@ -57,7 +57,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
         </div>
       </CardContent>
 
-      <Link to={`/details/${product._id}`}>
+      <Link to={`/details/${product.id}`}>
         <CardFooter className="px-4 flex gap-2">
           <Button
             className="flex-1 font-medium text-xs h-9 px-2 sm:text-sm sm:px-3"
