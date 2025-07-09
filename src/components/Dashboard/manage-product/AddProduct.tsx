@@ -63,6 +63,7 @@ export default function AddProduct() {
 
     try {
       const imageUrl = await uploadImageToCloudinary(data.image);
+      console.log(imageUrl);
       if (!imageUrl) {
         throw new Error("Something went wrong when uploading the image!");
       }

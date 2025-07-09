@@ -83,7 +83,7 @@ export default function CheckoutForm({
     const toastId = toast.loading("Checkout is on processing...");
     try {
       const result = await checkout(orderData).unwrap();
-      if (orderData.paymentMethod === "Cash On Delivery") {
+      if (orderData.paymentMethod === "CASH ON DELIVERY") {
         const id = result.data.id;
         window.location.replace(`/checkout/COD/success/${id}`);
       } else {
@@ -165,9 +165,9 @@ export default function CheckoutForm({
                   <Button
                     type="button"
                     variant={
-                      field.value === "Cash On Delivery" ? "default" : "outline"
+                      field.value === "CASH ON DELIVERY" ? "default" : "outline"
                     }
-                    onClick={() => field.onChange("Cash On Delivery")}
+                    onClick={() => field.onChange("CASH ON DELIVERY")}
                   >
                     <Banknote className="h-5 w-5" />
                     Cash On Delivery
@@ -175,9 +175,9 @@ export default function CheckoutForm({
                   <Button
                     type="button"
                     variant={
-                      field.value === "Online Payment" ? "default" : "outline"
+                      field.value === "ONLINE PAYMENT" ? "default" : "outline"
                     }
-                    onClick={() => field.onChange("Online Payment")}
+                    onClick={() => field.onChange("ONLINE PAYMENT")}
                   >
                     <CreditCard className="h-5 w-5" />
                     Online Payment

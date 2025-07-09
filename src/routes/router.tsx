@@ -17,6 +17,7 @@ import OrderDetails from "../pages/order-details/OrderDetails";
 import OP_Success from "../pages/order-success/OP_Success";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import { dashboardRoutes } from "./dashboardRutes";
+import PrivateRoutes from "./privateRoute";
 
 const router = createBrowserRouter([
   {
@@ -50,11 +51,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <PrivateRoutes>
+            <Checkout />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoutes>
+            <Profile />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/my-orders",
@@ -82,7 +91,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoutes AdminRoutes={true}>
+        <DashboardLayout />
+      </PrivateRoutes>
+    ),
     errorElement: <NotFound />,
     children: dashboardRoutes,
   },
