@@ -3,7 +3,6 @@ import { TRole } from "../../../types";
 import { Badge } from "../../ui/badge";
 
 const UserRoleBadge = ({ role }: { role: TRole | undefined }) => {
-  console.log("role", role);
   if (!role) return null;
 
   const statusConfig = {
@@ -19,7 +18,8 @@ const UserRoleBadge = ({ role }: { role: TRole | undefined }) => {
     },
   };
 
-  const config = statusConfig[role] || statusConfig.user;
+  const normalizedRole = role.toLowerCase() as keyof typeof statusConfig;
+  const config = statusConfig[normalizedRole] || statusConfig.user;
 
   return (
     <Badge
@@ -27,7 +27,7 @@ const UserRoleBadge = ({ role }: { role: TRole | undefined }) => {
       className={`flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-full transition-all ${config.className}`}
     >
       {config.icon}
-      <span className="capitalize">{role.toLowerCase()}</span>
+      <span className="capitalize">{normalizedRole}</span>
     </Badge>
   );
 };

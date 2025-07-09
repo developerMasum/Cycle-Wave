@@ -27,7 +27,7 @@ export interface IOrder {
   status: "Pending" | "Confirmed" | "Shipped" | "Delivered" | "Cancelled";
   paymentStatus: "Pending" | "Paid" | "Failed";
   transactionId: string;
-  paymentMethod: "Cash On Delivery" | "Online Payment";
+  paymentMethod: "Cash On Delivery" | "ONLINE PAYMENT";
   deliveryCharge: number;
   createdAt: string;
   updatedAt: string;

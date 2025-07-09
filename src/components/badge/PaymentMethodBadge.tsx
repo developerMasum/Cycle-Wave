@@ -7,7 +7,7 @@ export default function PaymentMethodBadge({
 }: {
   method: (typeof paymentMethod)[number];
 }) {
-  const isOnlinePayment = method === "Online Payment";
+  const isOnlinePayment = method === "ONLINE PAYMENT";
   return (
     <Badge
       variant="outline"
