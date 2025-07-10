@@ -84,10 +84,12 @@ export default function CheckoutForm({
     try {
       const result = await checkout(orderData).unwrap();
       if (orderData.paymentMethod === "CASH ON DELIVERY") {
+        console.log(" checkout result", result);
         const id = result.data.id;
         window.location.replace(`/checkout/COD/success/${id}`);
       } else {
-        window.location.href = result?.data?.payment_url;
+        window.location.href = result?.data?.url;
+        console.log(" checkout result", result);
         toast.success("Order placed successfully!", { id: toastId });
         clearCart();
       }
